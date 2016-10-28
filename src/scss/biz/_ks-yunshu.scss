@@ -1,0 +1,315 @@
+.ks-yunshu {
+  width: 100%;
+  /*.ks-header {
+    background: $ks-q-yellow;
+    h1 {
+      color: $ks-color-word;
+    }
+    .chevron_left {
+      font-size: 16px;
+      margin-left: 20px;
+    }
+    .ks-location {
+      font-size: 16px;
+      margin-right: 20px;
+    }
+  }*/
+  md-toolbar.ks-index-header.ks-header {
+    margin: 0 auto;
+    position: relative;
+    background: $ks-q-yellow;
+    color: $ks-color-word;
+    .lq-icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      margin-left: 15px;
+      color: #333;
+    }
+    .right-word {
+      font-size: 16px;
+      padding-right: 20px;
+    }
+  }
+  //md-tabs 选项卡头部 标签
+  .md-tab.md-active {
+    color: $ks-color-word;
+  }
+  md-tabs[md-border-bottom] md-tabs-wrapper {
+    border-bottom: 1px solid $ks-border-default;
+  }
+  md-tabs-canvas {
+    margin: 0 7px
+  }
+  md-tab-item {
+    h3 {
+      margin: 0;
+      font-weight: normal;
+      .numMsg {
+        padding: 5px;
+      }
+    }
+  }
+  md-next-button, md-prev-button {
+    display: none;
+  }
+  md-ink-bar {
+    background: $ks-color-word;
+    height: 4px;
+    margin-left: 15px;
+    max-width: 100px;
+  }
+  md-content {
+    background: transparent;
+  }
+  .md-tab {
+    padding: 12px 0;
+  }
+
+  //列表Wrap
+  .wrap {
+    position: relative;
+    /*进行中 下的选项卡*/
+    md-tabs {
+      background: #f5f5f5;
+    }
+    md-ink-bar {
+      display: none;
+    }
+    md-tab-item h3 {
+      margin: 0 5px;
+      font-size: 16px;
+      border-radius: 3px;
+      background: #e6e6e6;
+      position: relative;
+      color: #999;
+      span {
+        position: absolute;
+        display: inline-table;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        top: -5px;
+        right: -5px;
+        background: $ks-q-red;
+        border: 2px solid $ks-border-white;
+        display: none;
+      }
+    }
+    .md-tab {
+      margin-top: -3px;
+      line-height: 30px;
+    }
+    .md-tab.md-active h3 {
+      background: $ks-q-yellow;
+      color: $ks-color-word;
+      span {
+        display: block;
+      }
+    }
+    //当没有记录的时候显示的图标
+    .texWrap {
+      .lq-icon {
+        font-size: 60px;
+        line-height: 60px;
+        margin: 0 0 3px;
+        color: $lq-icon-pop;
+      }
+      p {
+        margin: 0;
+        color: $ks-color-hint;
+        font-size: 18px;
+      }
+    }
+    //任务列表
+    .overTask {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-bottom: 1px solid $ks-border-default;
+      .divis {
+        height: 10px;
+        background-color: #f5f5f5;
+      }
+      .msgIcon {
+        width: 30px;
+        height: 30px;
+        background: red;
+        position: absolute;
+        left: -16px;
+        top: -16px;
+        transform: rotate(45deg);
+        -ms-transform: rotate(45deg); /* IE 9 */
+        -moz-transform: rotate(45deg); /* Firefox */
+        -webkit-transform: rotate(45deg); /* Safari 和 Chrome */
+        -o-transform: rotate(45deg); /* Opera */
+      }
+      .overTaskTop {
+        width: 100%;
+        height: 50px;
+        //border-top: 1px solid $ks-border-default;
+        border-bottom: 1px solid $ks-border-default;
+        i {
+          background: orangered;
+          display: inline-block;
+          font-style: normal;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 32px;
+          font-weight: bold;
+          color: #fff;
+          margin-top: 10px;
+          font-size: 16px;
+        }
+        i.wo {
+          background: $ks-q-hui;
+        }
+        i.qu {
+          background: $ks-q-blue;
+        }
+        i.huan {
+          background: $ks-q-purple;
+        }
+        i.song {
+          background: $ks-q-green;
+        }
+
+        div.left {
+          margin-left: 20px;
+          display: inline-block;
+          float: left;
+          .lq-icon {
+            font-size: 14px;
+            color: $ks-color-pop;
+            text-align: center;
+            padding-right: 5px;
+          }
+        }
+        div.ash {
+          i {
+            background: $ks-color-hint;
+          }
+          .blue {
+            background: $ks-q-blue;
+          }
+        }
+        div.right {
+          float: right;
+          margin-right: 20px;
+          line-height: 30px;
+          padding-left: 20px;
+          border-left: 1px solid $ks-border-default;
+          height: 30px;
+          margin-top: 10px;
+          color: $ks-q-red;
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+      p.txt {
+        margin-top: 15px;
+        line-height: 1.5em;
+        padding: 0 20px;
+        font-size: 16px;
+        span {
+          font-weight: bold;
+          margin-right: 3px;
+          font-size: 16px;
+        }
+        span.song {
+          color: $ks-q-green;
+        }
+        span.qu {
+          color: $ks-q-blue;
+        }
+        span.huan {
+          color: $ks-q-purple;
+        }
+      }
+
+      .exchange {
+        height: 30px;
+        border-top: 1px dashed #d5d5d5;
+        margin: 0 20px;
+        padding: 20px 0;
+        div.left {
+          color: $ks-color-word;
+          text-align: center;
+          padding: 3px 8px;
+          border-radius: 30px;
+          background: #c0c0c0;
+          float: left;
+          font-size: 16px;
+        }
+        div.right {
+          padding: 2px 8px;
+          border-radius: 30px;
+          background: #fff;
+          border: 1px solid #101010;
+          color: $ks-color-word;
+          float: left;
+          margin-left: 10px;
+          font-size: 16px;
+        }
+      }
+      .dropBut {
+        background: $ks-q-red;
+        border-radius: 2px;
+        color: $ks-color-white;
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
+        margin: 0 20px 20px 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .qiangdan {
+        background: $ks-q-green;
+        border-radius: 2px;
+        color: $ks-color-white;
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
+        margin: 0 20px 20px 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .btnWrap {
+        margin: 0 20px 20px 20px;
+        .leftBtn {
+          background: $ks-q-green;
+          border-radius: 2px;
+          color: $ks-color-white;
+          text-align: center;
+          line-height: 40px;
+          height: 40px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .leftBtn.bgRed {
+          background: $ks-q-red;
+          margin-right: 10px;
+        }
+        .leftBtn.bgGray {
+          color: #101010;
+          margin-right: 10px;
+          background: $ks-q-bg;
+        }
+        .yiqujian {
+          background: $ks-q-yellow;
+          border-radius: 2px;
+          color: $ks-color-word;
+          text-align: center;
+          line-height: 40px;
+          height: 40px;
+          font-weight: bold;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

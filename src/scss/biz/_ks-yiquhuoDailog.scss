@@ -1,0 +1,116 @@
+
+md-dialog.ks-yiquhuoDailog{
+  overflow: auto;
+  box-shadow:none;
+  background:transparent;
+  width: 100%;
+  max-width: 100%;
+  margin:0 20px;
+  top: -55px;
+  div.row{
+    border-bottom: 1px solid $ks-border-default;
+    h1{
+      font-size: 18px;
+      color: $ks-color-white;
+    }
+    div.phoneInputWrap{
+      height: 45px;
+      position: relative;
+      background: #fff;
+      margin-top: 20px;
+      border-radius: 3px;
+      input{
+        height: 20px;
+        margin-top: 13px;
+        width: 80%;
+        text-indent: 20px;
+        border-radius: 3px;
+        font-size: 16px;
+        border: none;
+        color: $ks-color-pop
+      }
+      div.iconWrap{
+        width: 45px;
+        height: 30px;
+        background: deeppink;
+        position: absolute;
+        right: 0;
+        top: 8px;
+        border-left: 1px solid #d5d5d5;
+      }
+      span{
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        top: -7px;
+        right: -7px;
+        border-radius: 50%;
+        background: $ks-q-red;
+        font-size: 22px;
+        color: $ks-color-white;
+        line-height: 11px;
+        text-align: center;
+        border:2px solid $ks-border-default;
+      }
+    }
+    div.addDiv{
+      margin-top: 15px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: 18px;
+      color: $ks-color-pop;
+
+    }
+    div.right,div.left{
+      border:1px solid $ks-border-default;
+      height: 95px;
+      width: 47%;
+      margin-top: 20px;
+    }
+    div.left{
+      float: left;
+      position: relative;
+
+      span{
+
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        top: -7px;
+        right: -7px;
+        border-radius: 50%;
+        background: $ks-q-red;
+        font-size: 22px;
+        color: $ks-color-white;
+        line-height: 11px;
+        text-align: center;
+
+      }
+    }
+    div.right{
+      float: right;
+      border:1px  dashed $ks-border-default;
+    }
+  }
+  div.row:nth-of-type(3){
+    border-bottom:none;
+  }
+  div.but{
+    clear: both;
+    height: 45px;
+    width: 100%;
+    border-radius: 3px;
+    background: $ks-q-yellow;
+    font-size: 15px;
+    color: $ks-color-word;
+    text-align: center;
+    line-height: 45px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  div.row:last-child{
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,242 @@
+.ks-apply {
+  //header开始
+  md-toolbar.ks-index-header.ks-header {
+    margin: 0 auto;
+    position: relative;
+    background: $ks-q-yellow;
+    color: $ks-color-word;
+    .lq-icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      margin-left: 15px;
+    }
+    .right-word {
+      .lq-icon {
+        margin-left: 35px;
+        font-size: 20px;
+      }
+    }
+    .right-word.lxkf {
+      font-size: 16px;
+      color: #101010;
+      margin-right: 20px;
+      white-space: nowrap;
+      a{
+        text-decoration: none;
+        font-size: 16px;
+        color: #101010;
+      }
+    }
+  }
+  .main_content {
+    .tops {
+      margin: 20px;
+      .topInput {
+        border: 1px solid $ks-border-default;
+        height: 42px;
+        line-height: 42px;
+        margin: 10px 0;
+        position: relative;
+        border-radius: 2px;
+        input {
+          border: none;
+          min-width: 260px;
+          text-indent: 10px;
+          color: $ks-color-word;
+          font-size: 16px;
+        }
+        .topLocation {
+          border-left: 1px solid $ks-border-default;
+          height: 24px;
+          position: absolute;
+          right: 0;
+          top: 10px;
+          line-height: 24px;
+          padding-right: 9px;
+          .lq-icon {
+            font-size: 18px;
+            text-align: center;
+            color: $lq-icon-default;
+            line-height: 22px;
+            margin: 0 5px;
+          }
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .upFile {
+      margin: 0 20px;
+      h2 {
+        margin: 0;
+        font-size: 18px;
+        margin-bottom: 20px;
+        padding: 5px 0 15px 0;
+        border-bottom: 1px solid $ks-border-default;
+      }
+      .dividash {
+        height: 1px;
+        border-top: 1px dashed $ks-border-default;
+        margin-bottom: 20px;
+      }
+      .photo {
+        margin-bottom: 20px;
+        .showPhoto {
+          margin-right: 5px;
+          width: 100%;
+          border: 1px solid $ks-border-white;
+          border-radius: 2px;
+          .imgs {
+            font-size: 0;
+            position: relative;
+            padding-top: 66.66%;
+            overflow: hidden;
+            .depict {
+              position: absolute;
+              top: 0;
+              left: 0;
+              background-color: #333;
+              color: $ks-color-white;
+              text-align: center;
+              height: 30px;
+              line-height: 30px;
+              width: 66px;
+              z-index: 9;
+              opacity: 0.6;
+              font-size: 14px;
+            }
+            img {
+              width: 100%;
+              border-radius: 2px;
+              position: absolute;
+              top: 0;
+            }
+          }
+        }
+        .myPhoto {
+          width: 100%;
+          border: 1px solid $ks-border-default;
+          margin-left: 5px;
+          font-size: 0;
+          position: relative;
+          border-radius: 2px;
+          .btn {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            overflow: hidden;
+            div {
+              font-size: 14px;
+              color: $ks-color-hint;
+              position: absolute;
+              bottom: 10px;
+              width: 100%;
+              text-align: center;
+            }
+            .lq-icon {
+              font-size: 38px;
+              min-height: 38px;
+              min-width: 38px;
+              line-height: 38px;
+              text-align: center;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              margin-left: -19px;
+              margin-top: -19px;
+              color: $ks-color-hint;
+            }
+          }
+          .removePic {
+            position: absolute;
+            right: -8px;
+            top: -8px;
+            background-color: $ks-q-red;
+            border-radius: 50%;
+            z-index: 9;
+            .lq-icon {
+              color: $ks-color-white;
+              font-size: 10px;
+              text-align: center;
+              min-width: 20px;
+              min-height: 20px;
+              line-height: 20px;
+            }
+          }
+          .isMyImg {
+            font-size: 0;
+            position: relative;
+            padding-top: 66.66%;
+            overflow: hidden;
+            img {
+              width: 100%;
+              border-radius: 2px;
+              position: absolute;
+              top: 0;
+            }
+          }
+          #uploaderFile {
+            display: none;
+          }
+          #uploaderFile1 {
+            display: none;
+          }
+        }
+      }
+    }
+    .agreement {
+      padding: 0 20px 15px;
+      background: #fff;
+      .lq-icon {
+        color: $ks-q-red;
+        text-align: center;
+        font-size: 18px;
+        margin-top: -4px;
+      }
+      .agreetxt {
+        padding-left: 8px;
+        line-height: 24px;
+        font-size: 13px;
+        color: #101010;
+      }
+      .info {
+        color: $ks-q-green;
+        font-style: normal;
+        font-size: 13px;
+        text-decoration: underline;
+      }
+    }
+    .applyBtn {
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 2px;
+      color: $ks-color-white;
+      background-color: $ks-q-green;
+      margin: 0 20px 20px 20px;
+    }
+  }
+
+  //申请中页面开始
+  .applying {
+    text-align: center;
+    .icon {
+      font-size: 60px;
+      color: #ccc;
+      span{
+        font-size: 14px;
+        margin-top: 32px;
+        display: block;
+
+      }
+    }
+
+  }
+
+}
+

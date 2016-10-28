@@ -1,0 +1,112 @@
+
+md-dialog.ks-comDailog{
+  box-shadow:none;
+  background:transparent;
+  width: 100%;
+  max-width: 100%;
+  margin:0 20px;
+  top: -55px;
+  div.row{
+    border-bottom: 1px solid $ks-border-default;
+    h1{
+      font-size: 18px;
+      color: $ks-color-white;
+    }
+    p{
+      margin: 0;
+      padding: 0;
+      line-height: 1.5em;
+    }
+    p.price{
+      margin-top: 14px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      color: $ks-color-white;
+      input{
+        display: block;
+        text-align: right;
+        float: right;
+        background: transparent;
+        border: none;
+        font-weight: bold;
+        color: $ks-color-white;
+      }
+
+      input::-moz-placeholder {
+        color: $ks-color-white  !important;
+      }
+    }
+    div.right,div.left{
+      border:1px solid $ks-border-default;
+      height: 95px;
+      width: 47%;
+      margin-top: 20px;
+    }
+    div.left{
+      float: left;
+      position: relative;
+
+      span{
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        top: -7px;
+        right: -7px;
+        border-radius: 50%;
+        background: $ks-q-red;
+        font-size: 22px;
+        color: $ks-color-white;
+        line-height: 11px;
+        text-align: center;
+
+      }
+    }
+    div.right{
+      float: right;
+      border:1px  dashed $ks-border-default;
+     }
+    div.clear{
+      clear: both;
+    }
+
+  }
+  div.codeWrap{
+    text-align: center;
+    margin-top:40px;
+    p{
+      color: $ks-color-pop;
+    }
+  }
+  div.row:nth-of-type(3){
+    border-bottom:none;
+  }
+  .txtArea{
+    margin-top: 20px;
+    background: $ks-q-hui;
+    resize: none;
+    width: 99%;
+    min-height: 100px;
+    text-indent: 5px;
+    line-height: 1.8em;
+    border:none;
+    border-radius: 3px;
+    color: $ks-color-white;
+  }
+  div.but{
+    clear: both;
+    height: 45px;
+    width: 100%;
+    border-radius: 3px;
+    background: $ks-q-red;
+    font-size: 15px;
+    color: $ks-color-white;
+    text-align: center;
+    line-height: 45px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  div.row:last-child{
+    margin-bottom: 10px;
+  }
+}

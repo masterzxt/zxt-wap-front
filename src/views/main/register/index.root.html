@@ -1,0 +1,37 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-register" style="background:url({{login.bg}}) top no-repeat;background-size:100% ">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20" ng-click="fallbackPage()">
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+        </div>
+        <h1 flex></h1>
+        <div flex="20" class="right-word"></div>
+    </md-toolbar>
+    <div class="reg">
+        <h2>{{user.title}}</h2>
+        <div class="reg_item">
+            <input type="text" placeholder="输入手机号" ng-model="user.username">
+        </div>
+        <!-- <div ng-if="type=='register'||type=='bindWx'||type=='findPwd'" class="reg_item" layout="row" layout-align="center center">
+             <input type="text" placeholder="输入验证码" flex ng-model="user.code">
+             <div flex="30" class="reg_msg" ng-click="getSmsCode()">{{fsyzm}}</div>
+         </div>-->
+        <div class="reg_item" layout="row" layout-align="center center">
+            <input type="text" placeholder="输入验证码" flex ng-model="user.code">
+            <div class="reg_msg" ng-if="state == 1" ng-click="getSmsCode()">{{fsyzm}}
+            </div>
+            <div class="reg_msg" ng-if="state == 2" style="text-decoration: none">{{fsyzm}}</div>
+        </div>
+        <!-- <div class="reg_item" layout="row">
+             <input type="text" placeholder="输入密码" flex ng-model="user.password">
+             <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-eye-o"></md-icon>
+         </div>-->
+        <div class="btn_sub" ng-click="register()">确认</div>
+        <!--<div class="btn_sub" ng-click="login()" ng-if="type=='login'">确认</div>
+        <div class="btn_sub" ng-click="register()" ng-if="type=='register'">确认</div>
+        <div class="btn_sub" ng-click="register()" ng-if="type=='bindWx'">确认</div>
+        <div class="btn_sub" ng-click="register()" ng-if="type=='findPwd'">确认</div>-->
+    </div>
+    <div class="backScreen"></div>
+</div>
+

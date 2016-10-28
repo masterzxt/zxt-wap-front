@@ -1,0 +1,37 @@
+<md-dialog class="ks-yiquhuoDailog">
+    <div class="row">
+        <h1 ng-if="transport.transportStatus=='TAKE'">确认取件</h1>
+        <h1 ng-if="transport.transportStatus=='AND'">确认换货</h1>
+        <h1 ng-if="transport.transportStatus=='SENT'">确认送达</h1>
+    </div>
+    <div class="row cur">
+        <div class="phoneInputWrap" ng-repeat="i in arr track by $index">
+            <input type="text" placeholder="请登记条形码" class="sss" ng-model="i.barcode"/>
+            <div class="iconWrap" ng-click="addQrCode($index)"></div>
+            <span ng-if="$index>0" ng-click="jian($index)">-</span>
+        </div>
+        <div class="addDiv" ng-click="addDiv()">
+            +添加多个条形码
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="left" ng-repeat="img in imgs">
+            <span ng-click="removeOneImg(img.id)">-</span>
+            <img class="img"
+                 ng-src="{{imgUrl}}{{img.key}}?imageView2/2/w/100/h/100"
+                 alt="Picture">
+        </div>
+        <div class="right" ng-click="uploaderFiles()"></div>
+    </div>
+    <div class="but" ng-click="takePart()">
+        <span ng-if="transport.transportStatus=='TAKE'">确认取件</span>
+        <span ng-if="transport.transportStatus=='AND'">确认换货</span>
+        <span ng-if="transport.transportStatus=='SENT'">确认送达</span>
+    </div>
+    <!--<div class="but" ng-if="transportStatus=='sendAddr'" ng-click="huanhuo()">已换货</div>-->
+    <!--<div class="but" ng-if="transportStatus=='useAddr'" ng-click="songda()">已送达</div>-->
+</md-dialog>
+<div class="closeDialog" ng-click="closeDialog()">X</div>
+<input type="file" nv-file-select uploader="uploader" style="display: none"
+       id="uploaderFile"/>

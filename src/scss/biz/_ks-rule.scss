@@ -1,0 +1,21 @@
+.ks-rule {
+  md-toolbar.ks-index-header.ks-header{
+    margin: 0 auto;
+    position: relative;
+    background: $ks-q-yellow;
+    color: $ks-color-word;
+    .lq-icon{
+      display: block;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      margin-left: 15px;
+    }
+    .right-word{
+      .lq-icon{
+        margin-left: 35px;
+        font-size: 20px;
+      }
+    }
+  }
+}

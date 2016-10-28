@@ -1,0 +1,68 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-account">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20" ng-click="fallbackPage()">
+            <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+        </div>
+        <h1 flex>账户余额</h1>
+        <div flex="20" class="right-word" ui-sref="main.account.accountDetail">明细</div>
+    </md-toolbar>
+    <div class="accounts">
+        <div class="title">{{(account.canAmount+account.notAmount)/100|num:2}}</div>
+        <div class="txt">总资产(元)</div>
+    </div>
+
+    <md-content flex="" id="content" class="main-content">
+        <div class="top" layout="row" layout-align="center center">
+            <div class="leftbar" flex>
+                <div class="bar_name">可提现</div>
+                <div class="bar_price">{{account.canAmount/100|num:2}}</div>
+            </div>
+            <div class="divis"></div>
+            <div class="rightbar" flex>
+                <div class="bar_name">提现中</div>
+                <div class="bar_price">{{account.totalRebate/100|num:2}}</div>
+            </div>
+        </div>
+        <div class="divWrap">
+            <div class="items" layout="row" ui-sref="main.bindWx">
+                <span flex>绑定微信账户</span>
+                <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon>
+            </div>
+            <div class="items" layout="row" ng-click='goCmsPage()'>
+            <span flex>规则说明<md-icon flex class=" lq-icon" md-font-set="lq-icon"
+                                    md-font-icon="lq-question-circle"></md-icon></span>
+                <md-icon flex class=" lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon>
+            </div>
+        </div>
+
+    </md-content>
+    <div class="foot" layout="column" ng-click="backOpen()">提现</div>
+    <div class="back" ng-if="backshow">
+        <div class="backScreen"></div>
+        <div class="withdraw">
+            <h2>提现金额</h2>
+            <div class="price" layout="row" layout-align="center center">
+                <div class="txt" flex>输入提现金额</div>
+                <input type="text" flex ng-model="with.nums" ng-change="getMaxNum()" placeholder="￥0">
+            </div>
+            <div class="allow">当前账户最多可提现￥{{account.canAmount/100|num:2}}</div>
+        </div>
+        <div class="backBottom">
+            <div class="wx_btn" ng-click="withdraw()" ng-if="!drawLoading">提现至微信账户</div>
+            <div class="wx_btn" ng-if="drawLoading&&!success">
+                <md-progress-circular  class="md-warn loading" md-diameter="20"></md-progress-circular>
+                提现中...
+            </div>
+            <div class="wx_btn" ng-if="drawLoading&&success">
+                <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-check-circle-o"></md-icon>
+                提现成功
+            </div>
+            <md-button ng-click="backOpen()" class="accent" layout="column">
+                <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-remove"></md-icon>
+            </md-button>
+        </div>
+
+    </div>
+</div>
+

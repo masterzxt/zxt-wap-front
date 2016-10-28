@@ -1,0 +1,12 @@
+<md-dialog class="ks-taskDailog">
+    <div class="row">
+        <h1>任务清单</h1>
+    </div>
+    <md-content layout="column" style="background: transparent;">
+        <div class="row " ng-repeat="sku in vms.result.taskList track by $index">
+            <p class="title">{{sku.title}}</p>
+            <p class="address">￥{{sku.price/100}}<span>x{{sku.count}}</span></p>
+        </div>
+    </md-content>
+</md-dialog>
+<div class="closeDialog" ng-click="vms.closeDialog()">X</div>

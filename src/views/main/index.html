@@ -1,0 +1,117 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-appIndex">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="left-word" flex="20" ng-click="openLeftMenu()">
+            <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-navicon"></md-icon>
+        </div>
+        <h1 flex ng-if="index.realName">{{index.showRealName}}的小店</h1>
+        <h1 flex ng-if="!index.realName && index.nickName">{{index.nickName}}的小店</h1>
+        <h1 flex ng-if="!index.realName && !index.nickName">{{index.username}}的小店</h1>
+        <div flex="20" class="right-word" ui-sref="main.message">
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-envelope"></md-icon>
+            <!--暂时先放在这，目前还做不了提示-->
+            <!--<span class="msgTishi"></span>-->
+        </div>
+    </md-toolbar>
+    <div class="top" layout="row" layout-align="center center">
+        <div class="leftbar" flex>
+            <div class="bar_name">今日收入</div>
+            <div class="bar_price">{{account.todayCount/100|num:2}}</div>
+        </div>
+        <div class="divis"></div>
+        <div class="rightbar" flex>
+            <div class="bar_name">本月收入</div>
+            <div class="bar_price">{{account.monthCount/100|num:2}}</div>
+        </div>
+    </div>
+    <div class="info" ng-if="!index.isQuser">{{index.title}}</div>
+    <div class="infos" ng-if="index.isQuser" ui-sref="{{index.url}}" layout="row">
+        <span flex>{{index.title}}</span>
+        <md-icon flex="10" class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon>
+    </div>
+    <md-content flex="" id="content" class="main-content">
+        <div class="items" layout="row" ng-if="index.isQuser || !index.isQuser&&index.runTaskNum>0"
+             ui-sref="main.transport">
+            <span flex>配送任务</span>
+            <div class="numMsg">
+                <!--进行中的任务数量和新任务数-->
+                <i ng-if="index.newTaskNum">{{index.newTaskNum}}</i>
+                <i ng-if="index.runTaskNum">{{index.runTaskNum}}</i>
+            </div>
+            <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-truck"
+                     style="font-size: 28px;"></md-icon>
+        </div>
+        <div class="items notQ" layout="row" ng-if="!index.isQuser&&index.runTaskNum ==0">
+            <span flex>配送任务</span>
+            <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-truck"
+                     style="font-size: 28px;"></md-icon>
+        </div>
+        <div class="items" layout="row" ui-sref="main.recharge">
+            <span flex>售卡</span>
+            <md-icon flex class=" lq-icon" md-font-set="lq-icon" md-font-icon="lq-credit-card"></md-icon>
+        </div>
+        <div class="items" layout="row" ui-sref="main.extend">
+            <span flex>推广</span>
+            <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-signal-tower"></md-icon>
+        </div>
+    </md-content>
+    <div class="foot" layout="column" ng-click="apply()" ng-if="!index.isQuser">申请成为小Q</div>
+
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4" md-is-open="leftOpen" flex
+                layout="column">
+        <md-content flex id="content">
+            <div class="sideTop" ui-sref="main.personal">
+                <div>{{index.showRealName}},您好!</div>
+                <!-- <div ng-if="!index.realName">{{index.username}},您好!</div>-->
+                <span>查看并编辑个人资料</span>
+            </div>
+            <div class="sidenav" layout="row" ng-if="!index.isQuser">
+                <div class="sideitem_1" flex></div>
+                <div class="sideitem_2" flex></div>
+                <div class="sideitem_3" flex></div>
+                <div class="sideitem_4" flex></div>
+                <div class="sideitem_5" flex></div>
+            </div>
+            <div class="sidenavIsQ" layout="row" ng-if="index.isQuser">
+                <div class="sideitem_1" flex></div>
+                <div class="sideitem_2" flex></div>
+                <div class="sideitem_3" flex></div>
+                <div class="sideitem_4" flex></div>
+                <div class="sideitem_5" flex></div>
+            </div>
+            <div class="setUp">
+                <div class="setUp_list" layout="row" layout-align="center center" ui-sref="main.account">
+                    <div class="list_left" flex>
+                        <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-wallet-o"></md-icon>
+                        账户余额
+                    </div>
+                    <div class="list_right" flex>
+                        <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon>
+                    </div>
+                </div>
+                <div class="setUp_list" layout="row" layout-align="center center">
+                    <div class="list_left" flex>
+                        <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-user"></md-icon>
+                        客服
+                    </div>
+                    <div class="list_right" flex>
+                        <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon>
+                    </div>
+                </div>
+                <div class="setUp_list" layout="row" layout-align="center center" ui-sref="main.setting">
+                    <div class="list_left" flex>
+                        <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-gear"></md-icon>
+                        设置
+                    </div>
+                    <div class="list_right" flex>
+                        <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon>
+                    </div>
+                </div>
+            </div>
+        </md-content>
+        <md-button ng-click="openLeftMenu()" class="md-accent" layout="column">
+            <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-close"></md-icon>
+        </md-button>
+    </md-sidenav>
+</div>
+

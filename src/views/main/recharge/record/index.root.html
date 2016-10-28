@@ -1,0 +1,57 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-recharge">
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20" ng-click="fallbackPage()">
+            <md-icon class="chevron_left lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+        </div>
+        <h1 flex>售卡记录</h1>
+        <div flex="20" class="right-word"><span></span></div>
+    </md-toolbar>
+    <md-content>
+        <div class="transactionRecord">
+            <div class="month">
+                <span>历史交易记录</span>
+            </div>
+            <div class="introduceWrap" ng-repeat="record in recharges track by $index">
+                <div class="contentUserName" layout="row">
+                    <div class="contentUserNameOne" flex="15" layout="column" layout-align="center start ">
+                        <span>{{record.date | date:'MM.dd'}}</span>
+                        <span>{{record.date | date:'EEEE'}}</span>
+                    </div>
+                    <div class="contentUserNameTwo" flex="20" layout="column" layout-align="center center ">
+                        <div class="img1">
+                            <md-icon class="imgIcon lq-icon" md-font-set="lq-icon" md-font-icon="lq-card-r"></md-icon>
+                        </div>
+                    </div>
+                    <div class="contentUserNameThree" flex="" layout="column" layout-align="center start ">
+                        <span class="inv-name">{{(record.amount+record.givenAmount)/100}} &nbsp;&nbsp;&nbsp;充值卡</span>
+                        <span class="ivt-status">充值账户：{{record.phone}}</span>
+                    </div>
+                    <!--  <div class="contentUserNameOne" flex="25" layout="column" layout-align="center start "
+                      >
+                          <span>aaaaa</span>
+                      </div>-->
+                </div>
+            </div>
+            <!--<div layout="row" layout-align="center center" style="padding: 10px"
+                 ng-if="!pageEnd">
+                <md-button class="ks-white md-raised" flex style="color: #999;box-shadow: 0 0 0 0 #fff">
+                    &lt;!&ndash; <md-icon style="color: #999;margin-right: 10px" class=" lq-icon" md-font-set="lq-icon">loading</md-icon>&ndash;&gt;
+                    点击加载更多...
+                </md-button>
+            </div>
+            <div layout="row" layout-align="center center" style="padding: 10px"
+                 ng-if="pageEnd&&totalCount>10">
+                <md-button class="ks-white md-raised" flex style="color: #999;box-shadow: 0 0 0 0 #fff">
+                    没有更多记录了
+                </md-button>
+            </div>-->
+        </div>
+    </md-content>
+    <md-content flex layout="column" class="empty" ng-if="counts.recList.length===0">
+
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="lq-icon" class="icon" md-font-icon="lq-sort-right-left"></md-icon>
+            <div class="txt">您还没有交易记录~</div>
+        </div>
+    </md-content>
+</div>

@@ -1,0 +1,77 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-recharge">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20" ng-click="fallbackPage()">
+            <md-icon class="chevron_left lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+        </div>
+        <h1 flex>售卡</h1>
+        <div flex="20" class="right-word"><span ui-sref="main.recharge.record">记录</span></div>
+    </md-toolbar>
+    <md-divider></md-divider>
+    <md-content flex style="background: rgba(0,0,0,0.5);">
+        <div class="contentWrap">
+            <!--使用ng-repeat使，要放在带有divWrap的div上-->
+            <div class="divWrap" layout="column" layout-align="space-between start"
+                 ng-repeat="data in recharges track by $index">
+                <div flex class="divWrapTop" layout="row" layout-align="space-between center">
+                    <div flex layout="row" layout-align="start start">
+                        <div class="money"><span>￥</span>{{(data.requiredMoney+data.giveMoney)/100 | num :0}}</div>
+                        <div class="txt">{{data.name}}</div>
+                    </div>
+                </div>
+
+                <div flex class="divWrapCenter" layout="row" layout-align="space-between center">
+                    <div flex layout="column" layout-align="start start">
+                        <div class="divTop">
+                            <div>专享价：<span>￥{{data.requiredMoney/100 |num:1}}</span></div>
+                        </div>
+                        <div class="divBottom" layout="row" layout-align="space-around start">
+                            <div flex>
+                                <span>有效期至：</span>
+                                <span ng-if="data.endTime">{{data.endTime|date:'yyyy/MM/dd'}}</span>
+                                <!-- <span ng-if="!data.endTime">无</span>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div layout="row" class="count">
+                        <div class="minus" ng-if="!data.count || data.count==0"
+                             style="background: #ccc"
+                             ng-mobile-click="reduce($index)" layout=""
+                             layout-align="center center">
+                            <md-icon class="iconBtn" md-font-set="lq-icon" md-font-icon="lq-minus"></md-icon>
+                        </div>
+                        <div class="minus" ng-mobile-click="reduce($index)" layout=""
+                             layout-align="center center"
+                             ng-if="data.count"
+                             style="background: #101010">
+                            <md-icon class="iconBtn" md-font-set="lq-icon" md-font-icon="lq-minus"></md-icon>
+                        </div>
+
+                        <input ng-if="data.count" type="number" ng-model="data.count" layout=""
+                               readonly="readonly"
+                               layout-align="center center"/>
+                        <input ng-if="!data.count" type="number" layout=""
+                               readonly="readonly" value="0"
+                               layout-align="center center"/>
+                        <div class="add" ng-mobile-click="add($index)" layout=""
+                             layout-align="center center">
+                            <md-icon class="iconBtn" md-font-set="lq-icon" md-font-icon="lq-plus"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<qrcode data="http://baidu.com" size="400" bgcolor="#f30"></qrcode>-->
+    </md-content>
+    <div class="fotter" layout="row" layout-align="space-between center">
+        <div class="fotterLeft" layout="row">
+            <!--价格放在前面的花括号里，后面的花括号计算数量-->
+            <span>共:￥{{totalPrice|num:1}}（{{cardCount}}张）</span>
+        </div>
+        <div flex class="fotterRight" layout="row" layout-align="center center"
+             ng-click="showDialog($event)">
+            <span flex>支付</span>
+        </div>
+    </div>
+</div>

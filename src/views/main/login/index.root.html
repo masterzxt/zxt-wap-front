@@ -1,0 +1,26 @@
+<div flex="" layout="column" class="md-whiteframe-z2 ks-login ks-main" style="background:url({{login.bg}}) top no-repeat;background-size:100% ">
+    <md-content flex class="mains" layout="column">
+        <div class="parentWrap" flex>
+            <div class="myLogo">
+                <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-logo"></md-icon>
+            </div>
+            <div class="title">欢迎使用小Q</div>
+            <div class="wrap">
+                <div class="btn" ng-click="wxLogin()">
+                    <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-wechat"></md-icon>
+                    使用微信账号登录
+                </div>
+                <div class="btn zcbtn" ui-sref="main.register({type:'login'})">手机号登录</div>
+               <!-- <div layout="row" layout-align="center center" class="buff">
+                    <div class="txt" ui-sref="main.register({type:'findPwd'})">忘记密码</div>
+                    <div class="txt fl_r" ui-sref="main.register({type:'register'})">注册帐号</div>
+                </div>-->
+            </div>
+            <div class="fixedBottom">
+                V{{appVersion}}
+            </div>
+        </div>
+        <div class="backScreen"></div>
+    </md-content>
+</div>
+

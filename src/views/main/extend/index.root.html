@@ -1,0 +1,42 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-extend">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20" ng-click="fallbackPage()">
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+        </div>
+        <h1 flex>推广</h1>
+        <div flex="20" class="right-word"></div>
+    </md-toolbar>
+    <md-content flex="" id="content" class="main-content">
+        <div layout="row" flex="" ng-repeat="data in wapIndex" class="extendItem">
+            <div layout="column" flex="80" class="extendName">
+                <div class="myTitle">{{data.cnName}}</div>
+                <div class="desc">{{data.enName}}</div>
+            </div>
+            <div flex="20" class="exCode" ng-click="showCode(data)">
+                <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-qrcode"x></md-icon>
+            </div>
+        </div>
+        <!-- <a target="_blank" href="{{imgUrl}}/{{wapIndex[0].img}}" download="{{wapIndex[0].cnName}}">测试图片下载！</a>-->
+    </md-content>
+    <div class="back" ng-if="showBack" >
+        <div class="backScreen"></div>
+        <div class="scrollType">
+            <div class="withdraw">
+                <qrcode data="{{showUrl}}" size="142"></qrcode>
+            </div>
+            <div class="txt">扫描得小皇叔优惠券</div>
+            <div class="op">
+                <md-icon  class="lq-icon-share" md-font-set="lq-icon" md-font-icon="lq-share" ng-click="share()"></md-icon>
+                <md-icon  class="lq-icon-copy" md-font-set="lq-icon" md-font-icon="lq-chain" ng-click="copy()"></md-icon>
+                <md-icon  class="lq-icon-download" md-font-set="lq-icon" md-font-icon="lq-download" ng-click="download()"></md-icon>
+            </div>
+        </div>
+        <div class="backBottom">
+            <md-button ng-click="showCode()" class="accent" layout="column">
+                <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-remove"></md-icon>
+            </md-button>
+        </div>
+    </div>
+</div>
+

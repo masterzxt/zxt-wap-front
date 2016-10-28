@@ -1,0 +1,207 @@
+.ks-account {
+  md-toolbar.ks-index-header.ks-header {
+    margin: 0 auto;
+    position: relative;
+    background: $ks-q-yellow;
+    color: $ks-color-word;
+    .lq-icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      margin-left: 15px;
+      color: #333;
+    }
+    .right-word {
+      font-size: 16px;
+      padding-right: 20px;
+    }
+  }
+  .accounts {
+    height: 150px;
+    width: 100%;
+    background-color: $ks-q-yellow;
+    min-height: 150px;
+    .title {
+      text-align: center;
+      font-size: 50px;
+      padding-top: 30px;
+      font-weight: bold;
+    }
+    .txt {
+      text-align: center;
+      font-size: 18px;
+      padding-top: 12px;
+    }
+  }
+  .top {
+    background-color: $ks-q-white;
+    .leftbar, .rightbar {
+      height: 150px;
+      text-align: center;
+      .bar_name {
+        padding-top: 37px;
+        font-size: 18px;
+      }
+      .bar_price {
+        padding-top: 17px;
+        font-size: 32px;
+        font-weight: bold;
+      }
+    }
+    .divis {
+      width: 1px;
+      background-color: #101010;
+      height: 40px;
+    }
+  }
+  .divWrap {
+    margin: 0 20px;
+    .items {
+      height: 60px;
+      border-bottom: 1px solid $ks-border-default;
+      line-height: 60px;
+      span {
+        font-size: 18px;
+        .lq-icon {
+          font-size: 18px;
+          color: #999;
+          padding-left: 8px;
+          margin-top: -4px;
+        }
+      }
+      .lq-icon {
+        text-align: right;
+        color: $lq-icon-default;
+        font-size: 14px;
+        padding-right: 10px;
+      }
+    }
+    .items:nth-of-type(1) {
+      border-top: 1px solid $ks-border-default;
+    }
+  }
+  .foot {
+    background-color: $ks-q-green;
+    color: $ks-color-white;
+    height: 40px;
+    min-height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    margin: 20px;
+    font-weight: bold;
+    border-radius: 2px;
+  }
+  .back {
+    .backScreen {
+      background-color: #333;
+      opacity: 0.95;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+    }
+    .withdraw {
+      position: absolute;
+      z-index: 7;
+      top: 45px;
+      right: 0;
+      left: 0;
+      margin: 0 20px;
+      h2 {
+        color: $ks-color-white;
+        margin: 0;
+        padding: 20px 0;
+        border-bottom: 1px solid $ks-border-default;
+        font-size: 26px;
+        font-weight: bold;
+      }
+      .price {
+        border-bottom: 1px solid $ks-border-default;
+        height: 58px;
+        line-height: 58px;
+        input {
+          border: none;
+          background-color: transparent;
+          color: $ks-color-white;
+          text-align: right;
+          font-size: 26px;
+          font-weight: bold;
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers */
+          font-size: 26px;
+          color: $ks-color-white;
+        }
+
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-size: 26px;
+          color: $ks-color-white;
+        }
+
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-size: 26px;
+          color: $ks-color-white;
+        }
+        .txt {
+          color: $ks-color-white;
+          font-size: 18px;
+        }
+      }
+      .allow {
+        color: $ks-color-pop;
+        padding: 15px 0;
+        font-size: 18px;
+      }
+
+    }
+    .backBottom {
+      position: absolute;
+      bottom: 0;
+      z-index: 8;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      padding-bottom: 10px;
+      .wx_btn {
+        height: 40px;
+        margin: 0 20px 35px 20px;
+        border-radius: 2px;
+        line-height: 40px;
+        background-color: $ks-q-green;
+        color: $ks-color-white;
+        text-align: center;
+        font-size: 16px;
+        position: relative;
+        font-weight: bold;
+        md-progress-circular.loading path {
+          stroke: $ks-q-white;
+        }
+        md-progress-circular svg {
+          top: -2px;
+          left: -30px;
+        }
+        .lq-icon {
+          font-size: 20px;
+          line-height: 20px;
+          color: $lq-icon-white;
+          position: absolute;
+          left: 50%;
+          top: 8px;
+          margin-left: -63px;
+        }
+      }
+      .accent {
+        margin: 0 auto;
+        .lq-icon {
+          color: $ks-color-white;
+          line-height: 36px;
+        }
+      }
+    }
+  }
+}

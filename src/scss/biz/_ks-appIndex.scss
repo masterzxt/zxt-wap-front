@@ -1,0 +1,223 @@
+.ks-appIndex {
+  //header开始
+  md-toolbar.ks-index-header.ks-header {
+    margin: 0 auto;
+    position: relative;
+    background: $ks-q-yellow;
+    color: $ks-color-word;
+    .lq-icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      color: #333;
+    }
+    .left-word {
+      .lq-icon {
+        margin-left: 20px;
+        font-size: 24px;
+      }
+    }
+    .right-word {
+      position: relative;
+      .lq-icon {
+        margin-right: 20px;
+        font-size: 24px;
+      }
+      .msgTishi {
+        position: absolute;
+        display: inline-table;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        top: -3px;
+        right: 15px;
+        background: #e84e40;
+        border: 2px solid #fff;
+      }
+    }
+  }
+  .top {
+    background-color: $ks-q-yellow;
+    .leftbar, .rightbar {
+      height: 150px;
+      text-align: center;
+      .bar_name {
+        padding-top: 35px;
+        font-size: 18px;
+      }
+      .bar_price {
+        padding-top: 15px;
+        font-size: 32px;
+        font-weight: bold;
+      }
+    }
+    .divis {
+      width: 1px;
+      background-color: #101010;
+      height: 40px;
+    }
+  }
+  .info {
+    background-color: $ks-q-red;
+    color: $ks-color-white;
+    height: 36px;
+    line-height: 36px;
+    text-indent: 20px;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .infos {
+    background-color: $ks-q-green;
+    color: $ks-color-white;
+    height: 36px;
+    line-height: 36px;
+    text-indent: 20px;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    .lq-icon {
+      text-align: right;
+      font-size: 14px;
+      color: $lq-icon-white;
+      padding-right: 60px;
+    }
+  }
+  .main-content {
+    margin: 0 20px;
+    .items {
+      height: 58px;
+      border-bottom: 1px solid $ks-border-default;
+      line-height: 58px;
+      span {
+        font-size: 18px;
+      }
+      .lq-icon {
+        text-align: right;
+        font-size: 22px;
+        color: $lq-icon-default;
+        padding-right: 10px;
+      }
+      .numMsg {
+        position: absolute;
+        left: 70px;
+        top: -15px;
+        i {
+          text-align: center;
+          line-height: 22px;
+          border-radius: 30px;
+          height: 22px;
+          background: #e84e40;
+          color: #ffffff;
+          font-size: 14px;
+          font-style: normal;
+          min-width: 22px;
+          padding: 0 5px;
+          //border: 2px solid #fff;
+        }
+      }
+
+    }
+    .notQ {
+      color: $ks-color-hint;
+      .lq-icon {
+        color: $ks-color-hint;
+        font-size: 28px;
+      }
+    }
+  }
+  .foot {
+    background-color: #333;
+    color: $ks-color-white;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .md-sidenav-left {
+    .sideTop {
+      height: 194px;
+      background-color: $ks-q-yellow;
+      padding-left: 20px;
+      div {
+        font-size: 32px;
+        padding-top: 80px;
+        font-weight: bold;
+      }
+      span {
+        font-size: 18px;
+        padding-top: 15px;
+        display: block;
+      }
+    }
+    .sidenav {
+      height: 36px;
+      .sideitem_1 {
+        background-color: #7e57ca;
+      }
+      .sideitem_2 {
+        background-color: #ff609d;
+      }
+      .sideitem_3 {
+        background-color: #e84e40;
+      }
+      .sideitem_4 {
+        background-color: #ff7043;
+      }
+      .sideitem_5 {
+        background-color: #ffa726;
+      }
+    }
+    .sidenavIsQ {
+      height: 36px;
+      .sideitem_1 {
+        background-color: #7e57c2;
+      }
+      .sideitem_2 {
+        background-color: #738ffe;
+      }
+      .sideitem_3 {
+        background-color: #29b6f6;
+      }
+      .sideitem_4 {
+        background-color: #26c6da;
+      }
+      .sideitem_5 {
+        background-color: #26a69a;
+      }
+    }
+    .setUp {
+      .setUp_list {
+        height: 58px;
+        min-height: 58px;
+        line-height: 58px;
+        font-size: 18px;
+        .list_left {
+          .lq-icon {
+            font-size: 22px;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 28px;
+            margin: 0 15px 0 15px;
+            color: $lq-icon-default;
+          }
+        }
+        .list_right {
+          text-align: right;
+          .lq-icon {
+            font-size: 14px;
+            padding-right: 10px;
+            color: $lq-icon-default;
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,24 @@
+<md-dialog class="ks-dateDailog">
+    <div class="row">
+        <h1>预约时间</h1>
+    </div>
+    <div class="row " layout="row">
+        <!--<div class="selectDiv" flex="33"><select><option>2016年</option></select></div>-->
+        <!--<div class="selectDiv" flex="33"><select><option>12月</option></select></div>-->
+        <!--<div class="selectDiv" flex="33"><select><option>01日</option></select></div>-->
+        <div class="selectDiv"><input type="date" name="dates" data-ng-model="vms.date"></div>
+    </div>
+    <!--<div class="row">-->
+    <!--<div class="selectHide">-->
+    <!--<select>-->
+    <!--<option>选择原因</option>-->
+    <!--</select>-->
+    <!--<md-icon class="chevron_right lq-icon" ng-model="vms.memo" md-font-set="lq-icon"-->
+    <!--md-font-icon="lq-arrow_right"></md-icon>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <textarea placeholder="添加备注" class="txtArea" ng-model="vms.memo"></textarea>
+    <div class="but" ng-click="vms.updateDate()">调整时间</div>
+</md-dialog>
+<div class="closeDialog" ng-click="vms.closeDialog()">X</div>

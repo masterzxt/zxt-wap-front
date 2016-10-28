@@ -1,0 +1,80 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-personal">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+            <div class="" flex="20" ng-click="fallbackPage()">
+                <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+            </div>
+            <h1 flex>个人资料</h1>
+            <div flex="20" class="right-word"></div>
+    </md-toolbar>
+
+    <md-content flex="" id="content" class="main-content">
+        <div class="myPhoto">
+            <div class="imgSite">
+                <img ng-src="{{imgUrl}}/{{baseInfo.avatar}}?imageView2/1/w/100/h/100"/>
+            </div>
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-camera-o" ng-click="backOpen(1)"></md-icon>
+        </div>
+        <div class="userInfo">
+            <div class="person_item item_main" layout="row" ng-click="backOpen(2)">
+
+                <div class="itemName" flex>{{baseInfo.nickName}}</div>
+                <div class="itemCon" flex><md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-edit"></md-icon></div>
+            </div>
+            <div class="person_item" layout="row">
+                <div class="itemName">
+                    <select class="myBirth" ng-model="staff.gender" ng-change="updateUserInfo()" ng-options="gender.name as gender.description for gender in  GenderEnums">
+                        <option value="">性别</option>
+                    </select>
+                </div>
+                <div class="itemCon"><md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon></div>
+            </div>
+
+            <div class="person_item" layout="row">
+                <div class="itemName" flex>
+                    <select class="myBirth" ng-model="staff.zodiac" ng-change="updateUserInfo()" ng-options="zodiac.name as zodiac.description for zodiac in  ZodiacEnums">
+                        <option value="">星座</option>
+                    </select>
+                </div>
+                <div class="itemCon"><md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon></div>
+            </div>
+            <!--<div class="person_item" layout="row">
+                <div class="itemName" flex>
+                    <select class="myBirth" ng-model="staff.month" ng-change="selectMonth()" ng-options="m for m in months">
+                        <option value="">未设置</option>
+                    </select>
+                </div>
+                <div class="itemName" flex>月</div>
+                <div class="itemName" flex ng-if="staff.month">
+                    <select class="myBirth" ng-model="staff.day" ng-change="setBirth()" ng-options="d for d in days">
+                        <option value="">未设置</option>
+                    </select>
+                </div>
+                <div class="itemName" flex ng-if="staff.month">日</div>
+                <div class="itemCon" ><md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon></div>
+            </div>-->
+        </div>
+    </md-content>
+    <div class="back" ng-if="backshow">
+        <div class="backScreen"></div>
+        <div class="selectPhoto" ng-if="isPhoto">
+            <div class="takePhoto">
+                <div class="sel_item" style="border-bottom: 1px solid #d5d5d5" ng-if="isApp">拍照</div>
+                <div class="sel_item" ng-click="uploaderFile()">从相册选择</div>
+                <input type="file" nv-file-select uploader="uploader" id="uploaderFile">
+            </div>
+            <div class="cancel" ng-click="backOpen()">取消</div>
+        </div>
+        <div class="changeNick" ng-if="isNick">
+            <div class="title">修改昵称</div>
+            <div class="changeTxt">
+                <input type="text" placeholder="{{baseInfo.nickName}}" ng-model="staff.myNewNick">
+            </div>
+            <div class="btns" layout="row" layout-align="center center">
+                <div class="leftBtn isBtn" flex ng-click="backOpen()">取消</div>
+                <div class="rightBtn isBtn" flex ng-click="updateNick()">确定</div>
+            </div>
+        </div>
+    </div>
+</div>
+

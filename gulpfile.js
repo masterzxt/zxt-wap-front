@@ -27,56 +27,62 @@ const htmlreplace = require('gulp-html-replace');
 const gulpIgnore = require('gulp-ignore');
 const tar = require('gulp-tar');
 const gzip = require('gulp-gzip');
-const vinylPaths = require('vinyl-paths');
+
 const del = require('del');
 const gulpmatch = require('gulp-match');
 const map = require('map-stream');
 const sass = require('gulp-sass');
 const concatCss = require('gulp-concat-css');
 const cleanCSS = require('gulp-clean-css');
-const connect = require('gulp-connect');
-const nodemon = require('gulp-nodemon');
 
 // ------------------------------------------------------------------------------ 环境变量
 if (!process.env.env) {
     gutil.log("未设定使用哪一种环境 env : [dev|test|prod], 默认使用 dev 环境");
     process.env.env = "dev";
 }
-if (["dev", "test", "prod", "demo"].indexOf(process.env.env) < 0) {
+if (["dev", "test", "prod", "demo", "app-dev", "app-test", "app-prod"].indexOf(process.env.env) < 0) {
     gutil.log(`不支持的 env : ${process.env.env}, 默认使用 dev 环境`);
     process.env.env = "dev";
 }
 gutil.log(`使用 env : ${chalk.red(process.env.env)}`);
 
-const target = "target";
+
 const config = {
     dev: {
         base: "16400/",
+        target: "target"
     },
     test: {
         base: "11300/",
+        target: "target"
     },
     prod: {
         // 这里仅仅加载 css， js， font，部分图片等。
-        base: "//static1.kingsilk.net/qh-admin-front/prod/2.2.0/"
+        base: "//static1.kingsilk.net/q-wap-front/prod/1.0.0/",
+        target: "target"
+    },
+    "app-dev": {
+        base: "./",
+        target: "../q-app/target/dev"
+    },
+    "app-test": {
+        base: "./",
+        target: "../q-app/target/test"
+    },
+    "app-prod": {
+        // 这里仅仅加载 css， js， font，部分图片等。
+        base: "./",
+        target: "../q-app/target/prod"
     }
 };
+// app路径和wap发布的路径可以不一致
+// const target = "target";
+const target = config[process.env.env].target;
 
 gulp.on("task_stop", e => {
     if (e.task.indexOf("change") >= 0) {
         gutil.log(`------------------------task [${chalk.red(e.task)}] done.`);
     }
-});
-
-
-// ------------------------------------------------------------------------------ task : connect
-gulp.task('connect', function () {
-    connect.server({
-        root: 'target/dist',
-        //port: 8888,
-        //host: "localhost",
-        livereload: true
-    });
 });
 
 // ------------------------------------------------------------------------------ task : clean
@@ -90,16 +96,15 @@ gulp.task("clean", cb => {
 // ------------------------------------------------------------------------------ task : lib.assets
 const libAssetsSrc = [
     'src/lib/?*/**/*',
-    '!src/lib/!(ueditor)/**/*.js',
-    '!src/lib/!(ueditor)/**/*.css',
+    '!src/lib/?*/**/*.js',
+    '!src/lib/?*/**/*.css',
     '!src/lib/?*/**/*.less',
     '!src/lib/?*/**/*.scss',
     '!src/lib/?*/**/*.map',
     'src/lib/lib-min-*.js',
     'src/lib/lib-min-*.js.map',
     'src/lib/lib-min-*.css',
-    'src/lib/lib-min-*.css.map',
-    //'src/lib/ueditor/**/*'
+    'src/lib/lib-min-*.css.map'
 ];
 const libAssetsWatchSrc = libAssetsSrc;
 gulp.task("lib.assets", cb => {
@@ -122,22 +127,47 @@ gulp.task("app.assets", cb => {
 // ------------------------------------------------------------------------------ task : lib.js
 const libJsSrc = [
 
-    'src/lib/holderjs/holder.js',
-
-    //七牛图片上传
-    'src/lib/StringView/stringview.js',
-    'src/lib/qiniu/qiniu.js',
-    'src/lib/qiniu/qiniu-etag.js',
 
     'src/lib/jquery/jquery.js',
-    'src/lib/jquery/jquery.event.drag.js',
-    'src/lib/detectmobilebrowser/detectmobilebrowser.js',
 
     'src/lib/modernizr/modernizr.js',
+    'src/lib/Swiper/js/swiper.js',
 
+    'src/lib/qiniu/qiniu.js',
+
+    'src/lib/jweixin/jweixin-1.0.0.js',
+
+    'src/lib/iscroll/iscroll.js',
+    'src/lib/platform/platform.js',
+
+    'src/lib/qrcode-generator/qrcode.js',
+    'src/lib/qrcode-generator/qrcode_UTF8.js',
+
+    'src/lib/hammerjs/hammer.js',
+
+    'src/lib/angular/angular.js',
+    'src/lib/angular-animate/angular-animate.js',
+    'src/lib/angular-aria/angular-aria.js',
+    'src/lib/angular-cookies/angular-cookies.js',
+    'src/lib/angular-gestures/gestures.js',
+    'src/lib/angular-iscroll/angular-iscroll.js',
+    'src/lib/angular-material/angular-material.js',
+    'src/lib/angular-messages/angular-messages.js',
+    'src/lib/angular-qrcode/angular-qrcode.js',
+    'src/lib/angular-resource/angular-resource.js',
+    'src/lib/angular-sanitize/angular-sanitize.js',
+    'src/lib/angular-swiper/angular-swiper.js',
+    'src/lib/angular-ui-router/angular-ui-router.js',
+
+    'src/lib/ui-router-extras/ct-ui-router-extras.js',
+
+    'src/lib/angular-file-upload/angular-file-upload.js'
+
+
+    //'src/lib/detectmobilebrowser/detectmobilebrowser.js',
+    //'src/lib/cropper/cropper.js',
     //'src/lib/jquery.flexslider/jquery.flexslider.js',
     //'src/lib/jQuery.mmenu/js/jquery.mmenu.min.all.js',
-
     //'src/lib/jQuery.mmenu/src/js/jquery.mmenu.oncanvas.js',
     //'src/lib/jQuery.mmenu/src/js/addons/jquery.mmenu.offcanvas.js',
     //'src/lib/jQuery.mmenu/src/js/addons/jquery.mmenu.autoheight.js',
@@ -158,101 +188,37 @@ const libJsSrc = [
     //'src/lib/jQuery.mmenu/src/js/addons/jquery.mmenu.sectionindexer.js',
     //'src/lib/jQuery.mmenu/src/js/addons/jquery.mmenu.toggles.js',
 
-    'src/lib/bootstrap/js/bootstrap.js',
-
-    // bootstrap-datepicker 
-    'src/lib/bootstrap-datepicker/js/bootstrap-datepicker.js',
-
-    // eonasdan-bootstrap-datetimepicker
-    'src/lib/moment/moment-with-locales.js',
-    'src/lib/moment-timezone/moment-timezone-with-data.js',
-    'src/lib/eonasdan-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js',
-
-
-    'src/lib/remarkable-bootstrap-notify/bootstrap-notify.js',
-
-    'src/lib/bootstrap-treeview/bootstrap-treeview.min.js',
-
-    'src/lib/angular/angular.js',
-    'src/lib/angular-resource/angular-resource.js',
-    'src/lib/angular-touch/angular-touch.js',
-    'src/lib/angular-animate/angular-animate.js',
-    'src/lib/angular-aria/angular-aria.js',
-    'src/lib/angular-sanitize/angular-sanitize.js',
-    'src/lib/angular-cookies/angular-cookies.js',
-    'src/lib/angular-material/angular-material.js',
+    //'src/lib/bootstrap/js/bootstrap.js',
     //'src/lib/angular-material-icons/angular-material-icons.js',
-    'src/lib/angular-material-data-table/md-data-table.js',
-    'src/lib/angular-messages/angular-messages.js',
-    'src/lib/flexslider/jquery.flexslider.js',
-
-    'src/lib/angular-file-upload/angular-file-upload.js',
-
-    // QRcode
-    'src/lib/qrcode-generator/qrcode.js',
-    'src/lib/qrcode-generator/qrcode_UTF8.js',
-    'src/lib/angular-qrcode/angular-qrcode.js',
-
-    'src/lib/angular-ui/angular-ui.js',
-    'src/lib/angular-ui/angular-ui-ieshiv.js',
-    'src/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-    'src/lib/angular-ui-router/angular-ui-router.js',
-    'src/lib/ui-router-extras/ct-ui-router-extras.js',
-    'src/lib/angular-material-sidenav/angular-material-sidenav.js',
-    'src/lib/angular-flexslider/angular-flexslider.js',
+    //'src/lib/flexslider/jquery.flexslider.js',
+    //'src/lib/angular-ui/angular-ui.js',
+    //'src/lib/angular-ui/angular-ui-ieshiv.js',
+    //'src/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+    //'src/lib/angular-flexslider/angular-flexslider.js', //  FIXME
     //'src/lib/marquee/jquery.marquee.js',
-
-    'src/lib/cropper/cropper.js',
-    'src/lib/fex-webuploader/webuploader.html5only.js',
-
-
-    // UEditor
-    'src/ueditor.config.js',
-    'src/lib/ueditor/ueditor.all.js',
-    'src/lib/ueditor/lang/zh-cn/zh-cn.js',
-
-
-    //simditor
-    'src/lib/js-beautiful/beautify-html.js',
-    'src/lib/simditor/javascripts/simditor/simditor-all.js',
-
-    'src/lib/angular-ueditor/angular-ueditor.min.js',
-    // ECharts
-    'src/lib/echarts/dist/echarts.js',
-
+    //'src/lib/webuploader/webuploader.js',
     //'src/lib/remarkable-bootstrap-notify/bootstrap-notify.js',
-    'src/lib/jweixin/jweixin-1.0.0.js',
-
     //'src/lib/swiper/js/swiper.js',
     //'src/lib/swiper/js/angular-swiper.js'
     //'src/lib/angular-swiper/dist/angular-swiper.js',
     //'src/lib/angular-pageslide-directive/dist/angular-pageslide-directive.js'
 
-    // iscroll
-    'src/lib/iscroll/iscroll.js',
-    'src/lib/platform/platform.js',
-    'src/lib/angular-iscroll/angular-iscroll.js',
-
-    //
-    'src/lib/angular-hotkeys/hotkeys.js',
 ];
 const libJsWatchSrc = libJsSrc;
 gulp.task('lib.js', cb => {
 
     // 先删除已经生成的文件
-    glob("src/lib/lib.js", (err, matches) => matches.forEach(filePath => fs.unlink(filePath)));
     glob("src/lib/lib-min-*.js", (err, matches) => matches.forEach(filePath => fs.unlink(filePath)));
     glob("src/lib/lib-min-*.js.map", (err, matches) => matches.forEach(filePath => fs.unlink(filePath)));
 
     // 再重新生成
-    return gulp.src(libJsSrc, {base: 'src/lib'})
+    return gulp.src(libJsSrc)
 
         // 合并
         .pipe(sourcemaps.init())
         .pipe(concat('lib.js'))
-        //.pipe(gulp.dest(path.join("src", "lib")))
         //.pipe(rev())
-        //.pipe(gulp.dest(target))
+        // .pipe(gulp.dest(path.join(target, "dist", "lib")))
 
         // 压缩
         .pipe(uglify())
@@ -260,20 +226,7 @@ gulp.task('lib.js', cb => {
             p.basename += "-min";
         }))
         .pipe(rev())
-        // .pipe(sourcemaps.write(".", {
-        //     debug: true,
-        //     sourceRoot:"/lib.js/",
-        //     mapSources: function (sourcePath) {
-        //
-        //         // source paths are prefixed with '../src/'
-        //         console.log(":::::: " + sourcePath);
-        //         return 'lib.js22/' + sourcePath;
-        //     }
-        // }))
-        .pipe(sourcemaps.write(".", {
-            includeContent: true,
-            sourceRoot: "/lib.js"
-        }))
+        .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(path.join("src", "lib")));
 });
 
@@ -297,14 +250,12 @@ gulp.task('lib.less', cb => {
                 cleancss
             ]
         }))
-        //.pipe(gulp.dest(path.join("src", "lib")))
         .pipe(rename(function (path) {
             if (path.basename === "lib") {
                 path.basename = "lib-min";
             }
         }))
         .pipe(rev())
-
 
         .pipe(sourcemaps.write(".", {
             includeContent: true,
@@ -315,60 +266,51 @@ gulp.task('lib.less', cb => {
 });
 
 
-// ------------------------------------------------------------------------------ task : lib.css
-const libCssSrc = [
+// // ------------------------------------------------------------------------------ task : lib.css
+// const libCssSrc = [
+//     "src/lib/normalize-css/normalize.css",
+//     "src/lib/animate-css/animate.css",
+//     "src/lib/cropper/cropper.css",
+//     "src/lib/webuploader/webuploader.css",
+//     "src/lib/iconfont/iconfont.css",
+//     "src/lib/bootstrap/css/bootstrap.css",
+//     "src/lib/bootstrap/css/bootstrap-theme.css",
+//     "src/lib/angular-ui/angular-ui.css",
+//     "src/lib/flexslider/flexslider.css",
+//     "src/lib/jQuery.mmenu/css/jquery.mmenu.all.css",
+//     "src/lib/marquee/jquery.marquee.css",
+//     "src/lib/swiper/css/swiper.css",
+//     "src/lib/angular-material/angular-material.css",
+//     "src/lib/material-design-icons/iconfont/material-icons.css"
+//     //"src/lib/angular-material-icons/angular-material-icons.css"
+// ];
+// const libCssWatchSrc = libCssSrc;
+// gulp.task('lib.css', cb => {
+//
+//     // 先删除已经生成的文件
+//     glob("src/lib/lib-min-*.css", (err, matches) => matches.forEach(filePath => fs.unlink(filePath)));
+//     glob("src/lib/lib-min-*.css.map", (err, matches) => matches.forEach(filePath => fs.unlink(filePath)));
+//
+//     // 再重新生成
+//     return gulp.src(libCssSrc, {
+//             base: process.cwd()
+//         })
+//
+//         .pipe(concatCss("src/lib/lib.css"), {rebaseUrls: true})
+//         .pipe(rename(function (path) {
+//             if (path.basename === "lib") {
+//                 path.basename = "lib-min";
+//             }
+//         }))
+//         .pipe(sourcemaps.init())
+//         .pipe(rev())
+//         //.pipe(concat("src/lib/lib.css"))
+//         .pipe(cleanCSS({keepSpecialComments: 1, sourceMap: false}))
+//         .pipe(sourcemaps.write("."))
+//         .pipe(gulp.dest("."));
+// });
 
-    "src/lib/normalize-css/normalize.css",
-    "src/lib/animate-css/animate.css",
-    "src/lib/cropper/cropper.css",
-    "src/lib/webuploader/webuploader.css",
-    "src/lib/iconfont/iconfont.css",
-    "src/lib/bootstrap/css/bootstrap.css",
-    "src/lib/bootstrap/css/bootstrap-theme.css",
-    "src/lib/angular-ui/angular-ui.css",
-    "src/lib/flexslider/flexslider.css",
-    "src/lib/jQuery.mmenu/css/jquery.mmenu.all.css",
-    "src/lib/marquee/jquery.marquee.css",
-    "src/lib/swiper/css/swiper.css",
-    "src/lib/angular-material/angular-material.css",
-    "src/lib/material-design-icons/iconfont/material-icons.css",
 
-
-    //simditor
-   /* "src/lib/simditor/stylesheets/simditor.css",
-    "src/lib/simditor/stylesheets/font-awesome.css",*/
-
-    /*  "src/lib/ueditor/themes/iframe.css",
-     "src/lib/ueditor/themes/default/css/ueditor.css",
-     "src/lib/ueditor/third-party/codemirror/codemirror.css"*/
-    //"src/lib/angular-material-icons/angular-material-icons.css"
-];
-const libCssWatchSrc = libCssSrc;
-gulp.task('lib.css', cb => {
-
-    // 先删除已经生成的文件
-    glob("src/lib/lib-min-*.css", (err, matches) => matches.forEach(filePath => fs.unlink(filePath)));
-    glob("src/lib/lib-min-*.css.map", (err, matches) => matches.forEach(filePath => fs.unlink(filePath)));
-
-    // 再重新生成
-    return gulp.src(libCssSrc, {
-            base: process.cwd()
-        })
-
-        .pipe(concatCss("src/lib/lib.css"), {rebaseUrls: true})
-        .pipe(sourcemaps.init())
-        .pipe(rename(function (path) {
-            console.log("====== path = ", path);
-            if (path.basename === "lib") {
-                path.basename = "lib-min";
-            }
-        }))
-
-        .pipe(cleanCSS({keepSpecialComments: 1, sourceMap: false}))
-        .pipe(rev())
-        .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest("."));
-});
 //
 //// ------------------------------------------------------------------------------ task : lib.scss
 //const libScssSrc = 'src/lib/lib.scss';
@@ -466,7 +408,7 @@ gulp.task('app.js', cb => {
             // 合并
             .pipe(sourcemaps.init())
             .pipe(concat('app.js'))
-            //.pipe(gulp.dest(path.join(target, "dist", "js")))
+
 
             // 压缩
             .pipe(uglify())
@@ -542,6 +484,8 @@ gulp.task('app.scss', cb => {
             .pipe(sourcemaps.write("."))
 
             .pipe(gulp.dest(path.join(target, "dist", "css")))
+
+
             .on('finish', () => {
                 cb();
             });
@@ -568,14 +512,12 @@ gulp.task('index.html', cb => {
             'appCss': {src: null, tpl: `<link rel="stylesheet" href="css/${appCss}"/>`},
             'libJs': {src: null, tpl: `<script src="lib/${libJs}"></script>`},
             'appJs': {src: null, tpl: `<script src="js/${appJs}"></script>`}
-            //'ueditor': {src: null, tpl: `<script src="${config[process.env.env].ueditor}/ueditor.config.js"></script>`}
         }))
         .pipe(htmlmin({
             collapseWhitespace: true,
             preserveLineBreaks: true
         }))
-        .pipe(gulp.dest(path.join(target, "dist")))
-        .pipe(connect.reload());
+        .pipe(gulp.dest(path.join(target, "dist")));
 });
 
 
@@ -676,22 +618,17 @@ gulp.task('demo.scss', cb => {
     ]).then(paths => {
         gulp.src(demoScssSrc)
             .pipe(plumber())
-
-            .pipe(sourcemaps.init())
             .pipe(rename(function (path) {
                 if (path.basename === "index") {
                     path.basename = "demo";
                 }
             }))
 
+            .pipe(sourcemaps.init())
             .pipe(sass({
-                errLogToConsole: true,
                 outputStyle: "compressed"
-            }))
-            .pipe(sourcemaps.write(".", {
-                includeContent: true,
-                sourceRoot: "/demo.scss/"
-            }))
+            }).on('error', sass.logError))
+            .pipe(sourcemaps.write("."))
 
             .pipe(gulp.dest("src/demo"))
             .on('finish', () => {
@@ -841,40 +778,13 @@ gulp.task('package', cb => {
 });
 
 
-// ------------------------------------------------------------------------------ task : mock
-gulp.task('mock', cb => {
-
-    var mockDemon = nodemon({
-        script: 'mock/index.js',
-        watch: ['mock']
-    }).on('restart', function () {
-        gutil.log(`${ chalk.red('mock express server restarted')}`);
-    }).on('start', function () {
-        gutil.log(`${ chalk.red('mock express server started')}`);
-    }).on('exit', function () {
-        gutil.log(`${ chalk.red('mock express server exited')}`);
-    }).on('crash', function () {
-        gutil.log(`${ chalk.red('mock express server crashed')}`);
-    });
-    process.once('uncaughtException', function () {
-        mockDemon.emit('quit');
-    });
-    cb();
-});
-
 // ------------------------------------------------------------------------------ task : default / watch
-gulp.task('app.compile.end.notify', cb => {
 
-    gutil.log(`${chalk.red('已经编译完毕，开始监听')}，请浏览器访问： http://dev.test.me/qh/admin/local/1xx00/`);
-    cb();
-});
-gulp.task('default', cb => { //['connect'],
+gulp.task('default', cb => {
 
     // 先手动执行一遍
     runSequence(
-        //"mock",
-        "app.compile",
-        'app.compile.end.notify'
+        "app.compile"
     );
 
     // 再进行监测

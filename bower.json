@@ -1,0 +1,42 @@
+{
+  "name": "zxt-wap-front",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "wangcy <wangcy@kingsilk.net>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-animate": "^1.5.7",
+    "angular-aria": "^1.5.7",
+    "angular-cookies": "^1.5.7",
+    "angular-file-upload": "^2.3.4",
+    "angular-gestures": "^0.3.1",
+    "angular-iscroll": "^3.2.0",
+    "angular-marquee": "*",
+    "angular-material": "v1.1.0-rc.5",
+    "angular-messages": "^1.5.7",
+    "angular-qrcode": "^6.2.1",
+    "angular-resource": "^1.5.7",
+    "angular-sanitize": "^1.5.7",
+    "angular-swiper": "^0.4.0",
+    "angular-ui-router": "^0.3.1",
+    "animate.css": "^3.5.2",
+    "echarts": "^3.2.2",
+    "holderjs": "^2.9.3",
+    "jquery": "^3.0.0",
+    "material-design-icons-font": "^2.2.3",
+    "sass-flex-mixin": "^1.0.3",
+    "Swiper": "swiper#^3.3.1",
+    "ui-router-extras": "^0.1.2"
+  }
+}

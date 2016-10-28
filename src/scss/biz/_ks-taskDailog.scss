@@ -1,0 +1,39 @@
+md-dialog.ks-taskDailog {
+
+  box-shadow: none;
+  background: transparent;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 20px;
+  top: -55px;
+  div.row {
+    min-height: 60px;
+    border-bottom: 1px solid $ks-border-default;
+    h1 {
+      font-size: 18px;
+      color: $ks-color-white;
+    }
+    p {
+      margin: 0;
+      padding: 0;
+      line-height: 1.5em;
+    }
+
+    p.title {
+      margin-top: 14px;
+      font-size: 14px;
+      font-weight: bold;
+      color: $ks-color-white;
+    }
+    p.address {
+      margin-bottom: 14px;
+      font-size: 14px;
+      color: $ks-color-white;
+      span {
+        display: block;
+        float: right;
+      }
+    }
+  }
+
+}

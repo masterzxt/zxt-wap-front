@@ -1,0 +1,52 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-message">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20" ng-click="fallbackPage()">
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+        </div>
+        <h1 flex>{{title}}</h1>
+        <div flex="20" class="right-word"></div>
+    </md-toolbar>
+    <md-content flex="" class="dialog-content">
+        <!--<div class="isNotMsg" layout="column" layout-align="center center" flex ng-if="">-->
+        <!--<md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-envelope"></md-icon>-->
+        <!--<div class="txt">暂无消息</div>-->
+        <!--</div>-->
+        <div class="msgDetail" layout="column" flex ng-if="messages.length>0 && type==='system'" ng-repeat="data in messages">
+            <div class="creatTime">{{data.sendDate|date:"MM-dd HH:mm:ss"}}</div>
+            <div class="isTxt">
+                <div class="title">{{data.title}}</div>
+                <div class="content">{{data.content}}</div>
+                <div class="getUrl" layout="row" layout-align="center center" ng-if="data.url" ui-sref="{{data.url}}">
+                    <div flex>查看详情</div>
+                    <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon>
+                </div>
+            </div>
+        </div>
+        <div class="msgDetail" layout="column" flex ng-if="messages.length>0 && type==='transport'" ng-repeat="data in messages">
+            <div class="creatTime">{{data.sendDate|date:"MM-dd HH:mm:ss"}}</div>
+            <div class="isTxt">
+                <div class="title">配送消息</div>
+                <div class="content">{{data.message}}</div>
+            </div>
+            <div class="getUrl" layout="row" layout-align="center center" ng-if="data.url" ui-sref="{{data.url}}">
+                <div flex>查看详情</div>
+                <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon>
+            </div>
+        </div>
+        <div class="msgDetail" layout="column" flex ng-if="messages.length>0 && type==='account'" ng-repeat="data in messages">
+            <div class="creatTime">{{data.date|date:"MM-dd HH:mm:ss"}}</div>
+            <div class="isTxt">
+                <div class="title">余额消息</div>
+                <div class="content">{{data.typeDes}}  --￥{{data.changeAmount/100}}</div>
+                <div class="content">{{data.statusDesp}}</div>
+            </div>
+            <div class="getUrl" layout="row" layout-align="center center" ng-if="data.url" ui-sref="{{data.url}}">
+                <div flex>查看详情</div>
+                <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-right"></md-icon>
+            </div>
+        </div>
+    </md-content>
+
+</div>
+

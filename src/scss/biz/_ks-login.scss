@@ -1,0 +1,92 @@
+.ks-login {
+  background: url("https://o96iiewkd.qnssl.com/964801a482ef6137a8815cb44e6786fb") top no-repeat;
+  background-size: 100%;
+  .mains{
+    background-color: transparent;
+    .backScreen{
+      background-color: #333;
+      opacity: 0.7;
+      height: 100%;width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+    }
+    .myLogo{
+      margin-top: 60px;
+      margin-left: 20px;
+      .lq-icon{
+        font-size: 60px;
+        color: $lq-icon-white;
+        width: 60px;
+        height: 60px;
+        min-height: 60px;
+        min-width: 60px;
+        line-height: 60px;
+      }
+    }
+    .parentWrap {
+      position: relative;
+      height: 100%;
+      z-index: 9;
+      .title {
+        margin: 20px 20px 0 20px;
+        font-size: 32px;
+        color: #fff;
+      }
+      .wrap {
+        z-index: 100;
+        width: 100%;
+        margin: 20% auto 0 auto;
+        .btn {
+          margin: 20px;
+          border-radius: 30px 30px 30px 30px;
+          text-align: center;
+          height: 40px;
+          font-size: 18px;
+          line-height: 40px;
+          background: $ks-q-yellow;
+          color: #101010;
+          font-weight: bold;
+          position: relative;
+          .lq-icon{
+            position: absolute;
+            top: 8px;
+            left: 30px;
+            font-size: 22px;
+            color: #333;
+          }
+        }
+        .btn.zcbtn {
+          border: 1px solid #d5d5d5;
+          color: #fff;
+          background: transparent;
+        }
+        .txt {
+          width: 80%;
+          color: #fff;
+        }
+        .buff{
+          width: 80%;
+          margin: 0 auto;
+          .fl_r{
+            text-align: right;
+          }
+        }
+      }
+      .fixedBottom {
+        width: 100%;
+        text-align: center;
+        color: $ks-color-hint;
+        position: absolute;
+        bottom: 30px;
+        font-size: 16px;
+      }
+    }
+    .parentWrap.bg {
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+}

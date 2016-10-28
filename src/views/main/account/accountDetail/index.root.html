@@ -1,0 +1,55 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-accountDetail">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20" ng-click="fallbackPage()">
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+        </div>
+        <h1 flex>收支明细</h1>
+        <div flex="20" class="right-word"></div>
+    </md-toolbar>
+
+    <md-content flex="" id="content">
+        <div class="introduceContent">
+            <div class="month">
+                <span> 提现总金额：</span>
+                <span> ￥1087.00</span>
+            </div>
+            <div class="introduceWrap" ng-repeat="accountDetail in account.recList track by $index">
+                <div class="contentUserName" layout="row">
+                    <div class="contentUserNameOne" flex="15" layout="column" layout-align="center center ">
+                        <span class="topDate">{{accountDetail.date | date:'EEE'}}</span>
+                        <span class="bottomDate">{{accountDetail.date | date:'MM.dd'}}</span>
+                    </div>
+                    <div class="contentUserNameTwo" flex="20" layout="column" layout-align="center center">
+                        <!--这里目前没有图标，有了图标还需要判断，来显示不同图标-->
+
+                        <md-icon style="background: #101010" class="ti-word lq-icon" md-font-set="lq-icon">ti-word
+                        </md-icon>
+                    </div>
+                    <div class="contentUserNameThree" flex="50" layout="column" layout-align="center start ">
+                        <span class="pri">￥{{accountDetail.changeAmount/100|num:1}}</span>
+                        <span class="txt">{{accountDetail.statusDesp}}，{{accountDetail.typeDes}}</span>
+                    </div>
+                    <div class="contentUserNameFor" flex="15" layout="column" layout-align="start center ">
+                        <span>{{accountDetail.date | date:'mm:ss'}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div layout="row" layout-align="center center" style="padding: 10px" ng-click="page(curPage)"
+             ng-if="!pageEnd">
+            <md-button class="ks-white md-raised" flex style="color: #999;box-shadow: 0 0 0 0 #fff">
+                <!-- <md-icon style="color: #999;margin-right: 10px" class=" ks-icon" md-font-set="ks-icon">loading</md-icon>-->
+                点击加载更多...
+            </md-button>
+        </div>
+        <div layout="row" layout-align="center center" style="padding: 10px"
+             ng-if="pageEnd&&totalCount>10">
+            <md-button class="ks-white md-raised" flex style="color: #999;box-shadow: 0 0 0 0 #fff">
+                没有更多记录了
+            </md-button>
+        </div>
+    </md-content>
+
+</div>
+

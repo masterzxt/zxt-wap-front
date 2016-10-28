@@ -1,0 +1,145 @@
+@font-face {
+  font-family: 'lq-iconfont';
+  src:  url('fonts/lq-iconfont_20161008_1.eot?rjjhod');
+  src:  url('fonts/lq-iconfont_20161008_1.eot?rjjhod#iefix') format('embedded-opentype'),
+    url('fonts/lq-iconfont_20161008_1.ttf?rjjhod') format('truetype'),
+    url('fonts/lq-iconfont_20161008_1.woff?rjjhod') format('woff'),
+    url('fonts/lq-iconfont_20161008_1.svg?rjjhod#lq-iconfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.lq-icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'lq-iconfont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 1em;
+  height: 1em;
+  font-size: 24px;
+}
+
+.lq-wallet:before {
+  content: "\e922";
+}
+.lq-wallet-o:before {
+  content: "\e917";
+}
+.lq-angle-left:before {
+  content: "\e900";
+}
+.lq-arrow-right:before {
+  content: "\e902";
+}
+.lq-angle-right:before {
+  content: "\e901";
+}
+.lq-minus-circle:before {
+  content: "\e905";
+}
+.lq-times-circle:before {
+  content: "\e906";
+}
+.lq-remove:before {
+  content: "\e911";
+}
+.lq-camera-plus:before {
+  content: "\e907";
+}
+.lq-camera-o:before {
+  content: "\e908";
+}
+.lq-map-marker:before {
+  content: "\e909";
+}
+.lq-crosshairs:before {
+  content: "\e90a";
+}
+.lq-download:before {
+  content: "\e903";
+}
+.lq-share:before {
+  content: "\e904";
+}
+.lq-envelope:before {
+  content: "\e90b";
+}
+.lq-commenting:before {
+  content: "\e90c";
+}
+.lq-logo:before {
+  content: "\e90d";
+}
+.lq-plus:before {
+  content: "\e90e";
+}
+.lq-minus:before {
+  content: "\e90f";
+}
+.lq-edit:before {
+  content: "\e910";
+}
+.lq-truck:before {
+  content: "\e912";
+}
+.lq-gear:before {
+  content: "\e913";
+}
+.lq-check-circle-o:before {
+  content: "\e914";
+}
+.lq-phone:before {
+  content: "\e915";
+}
+.lq-chain:before {
+  content: "\e916";
+}
+.lq-credit-card:before {
+  content: "\e918";
+}
+.lq-user:before {
+  content: "\e919";
+}
+.lq-scanning:before {
+  content: "\e91a";
+}
+.lq-clock:before {
+  content: "\e91b";
+}
+.lq-signal-tower:before {
+  content: "\e91c";
+}
+.lq-wechat:before {
+  content: "\e91d";
+}
+.lq-alipay:before {
+  content: "\e91e";
+}
+.lq-qrcode:before {
+  content: "\e91f";
+}
+.lq-question-circle:before {
+  content: "\e920";
+}
+.lq-navicon:before {
+  content: "\e921";
+}
+

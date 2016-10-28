@@ -1,0 +1,23 @@
+<md-dialog class="ks-recharge-dialog">
+    <div class="row" layout="row" layout-align="center center" ng-if="!vm.code_url">
+        <h1 flex>支付金额</h1>
+        <span class="numTxt">￥{{vm.totalPrice|num:2}}</span>
+    </div>
+    <div class="number" ng-if="!vm.code_url">
+        <input type="text" placeholder="请输入所充值账户(手机号)" ng-model="vm.phone">
+    </div>
+    <div class="payWrap" ng-if="!vm.code_url">
+        <div layout="column" layout-align="center center">
+            <div class="btn" ng-click="vm.payUser('ALIPAY')">支付宝支付码</div>
+            <div class="btn" ng-click="vm.payUser('WEIXIN')">微信支付码</div>
+            <!--<div class="btn" ng-click="vm.payUser('ALIPAY')">生成支付码</div>-->
+        </div>
+    </div>
+
+    <qrcode ng-if="vm.code_url" data="{{vm.code_url}}" size="300"
+            bgcolor="#f30"></qrcode>
+    <div class="msgTxt" ng-if="vm.type=='WEIXIN'">微信扫一扫支付</div>
+    <div class="msgTxt" ng-if="vm.type=='ALIPAY'">支付宝扫一扫支付</div>
+    <md-button class="ks-black" ng-if="vm.code_url" ng-click="vm.changeType()">更改支付方式</md-button>
+</md-dialog>
+<div class="closeDialog" ng-click="vm.closeDialog()">X</div>

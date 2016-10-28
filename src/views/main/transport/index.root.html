@@ -1,0 +1,141 @@
+<div class="ks-yunshu" layout="column">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20">
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"
+                     ng-click="rollback()"></md-icon>
+        </div>
+        <h1 flex>配送任务</h1>
+        <div flex="20" class="right-word">
+            <md-icon class="ks-location lq-icon" md-font-set="lq-icon" md-font-icon=" ks-location"></md-icon>
+        </div>
+    </md-toolbar>
+    <md-tabs
+            md-stretch-tabs="always"
+            md-border-bottom
+            md-center-tabs
+            md-swipe-content="true"
+            md-dynamic-height
+            md-stretch-tabs="always">
+        <md-tab ng-click="transportListAll('NEW',null,1,true)">
+            <md-tab-label><h3>新任务<span class="numMsg">{{index.newTaskNum}}</span></h3></md-tab-label>
+        </md-tab>
+        <md-tab ng-click="transportListAll('CARRY','ALL',1,true)">
+            <md-tab-label><h3>进行中<span class="numMsg">{{index.runTaskNum}}</span></h3></md-tab-label>
+        </md-tab>
+        <md-tab ng-click="transportListAll('END',null,1,true)">
+            <md-tab-label><h3>已完成</h3></md-tab-label>
+        </md-tab>
+    </md-tabs>
+
+    <md-content flex layout="column">
+        <div class="wrap" flex layout="column">
+            <!--没有任务时显示出来 -->
+            <md-tabs
+                    md-stretch-tabs="always"
+                    md-border-bottom
+                    md-center-tabs
+                    md-swipe-content="true"
+                    md-dynamic-height
+                    md-stretch-tabs="always" ng-if="params.tableType==='CARRY'">
+                <md-tab ng-click="transportListAll('CARRY','ALL',1,true)">
+                    <md-tab-label><h3>全部</h3></md-tab-label>
+                </md-tab>
+                <md-tab ng-click="transportListAll('CARRY','UN_TOOK',1,true)">
+                    <md-tab-label><h3>待取件<span ng-if="dataList.result.length>0"></span></h3></md-tab-label>
+                </md-tab>
+                <md-tab ng-click="transportListAll('CARRY','CHANGE',1,true)">
+                    <md-tab-label><h3>待换货<span ng-if="dataList.result.length>0"></span></h3></md-tab-label>
+                </md-tab>
+                <md-tab ng-click="transportListAll('CARRY','SEND',1,true)">
+                    <md-tab-label><h3>待送达<span ng-if="dataList.result.length>0"></span></h3></md-tab-label>
+                </md-tab>
+            </md-tabs>
+            <div class="texWrap" ng-if="dataList.result.length<1" flex layout="column" layout-align="center center">
+                <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-truck"></md-icon>
+                <p>暂无已配送任务</p>
+            </div>
+            <md-virtual-repeat-container style="height: 100%;" flex layout="column" ng-if="dataList.result.length>0">
+                <div md-virtual-repeat="tmp in dynamicItems" md-on-demand>
+                    <!--新任务-->
+                    <div class="overTask">
+                        <div class="divis"></div>
+                        <!--msgIcon是左上角的红色信息-->
+                        <div class="overTaskTop">
+                            <div class="left" ng-class="{ash:params.tableType==='CARRY'}">
+                                <i class="wo">我</i>
+                                <span><md-icon class="lq-icon" md-font-set="lq-icon"
+                                               md-font-icon="lq-arrow-right"></md-icon></span>
+                                <i class="qu" ng-class="{blue:dataList.result[tmp].transportStatus==='TAKE'}">取</i>
+                                <span ng-if="dataList.result[tmp].type=='AND'">
+                                    <md-icon class="lq-icon" md-font-set="lq-icon"
+                                             md-font-icon="lq-arrow-right"></md-icon>
+                                </span>
+                                <i class="huan" ng-if="dataList.result[tmp].type=='AND'"
+                                   ng-class="{blue:dataList.result[tmp].transportStatus==='AND'}">换</i>
+                                <span>
+                                    <md-icon class="lq-icon" md-font-set="lq-icon"
+                                             md-font-icon="lq-arrow-right"></md-icon>
+                                </span>
+                                <i class="song" ng-class="{blue:dataList.result[tmp].transportStatus==='SENT'}">送</i>
+                            </div>
+                            <div class="right">￥{{dataList.result[tmp].price/100 | num:1}}</div>
+                        </div>
+                        <p class="txt" ng-click="newTask(dataList.result[tmp])"
+                           ng-if="dataList.result[tmp].takeAddr"
+                           ng-class="{colorText:dataList.result[tmp].transportStatus==='TAKE'}">
+                            <span class="qu">取:</span>
+                            {{dataList.result[tmp].takeAddr.addr}}{{dataList.result[tmp].takeAddr.street}}{{dataList.result[tmp].takeAddr.phone}}
+                        </p>
+                        <p class="txt" ng-click="newTask(dataList.result[tmp])" ng-if="dataList.result[tmp].useAddr"
+                           ng-class="{colorText:dataList.result[tmp].transportStatus==='AND'}">
+                            <span class="huan">换:</span>
+                            {{dataList.result[tmp].useAddr.addr}}{{dataList.result[tmp].useAddr.street}}
+                        </p>
+                        <p class="txt" ng-click="newTask(dataList.result[tmp])"
+                           ng-if="dataList.result[tmp].sendAddr"
+                           ng-class="{colorText:dataList.result[tmp].transportStatus==='SENT'}">
+                            <span class="song">送:</span>{{dataList.result[tmp].sendAddr.addr}}{{dataList.result[tmp].sendAddr.street}}{{dataList.result[tmp].sendAddr.phone}}
+                        </p>
+                        <div class="exchange">
+                            <div class="left">{{dataList.result[tmp].typeName}}</div>
+                            <!--<div class="left">上门取件</div>-->
+                            <div class="right" ng-if="dataList.result[tmp].date">
+                                预约日期:{{dataList.result[tmp].date|date:"yyyy-MM-dd"}}
+                            </div>
+                        </div>
+
+                        <div class="qiangdan" ng-click="robOrder(dataList.result[tmp])"
+                             ng-if="dataList.result[tmp].transportStatus==='NEW'&&(!dataList.result[tmp].status||dataList.result[tmp].status==='NORMAL')">
+                            抢单
+                        </div>
+
+                        <div class="btnWrap" layout="row" layout-align="center center"
+                             ng-if="dataList.result[tmp].transportStatus==='TAKE' || dataList.result[tmp].transportStatus==='AND' || dataList.result[tmp].transportStatus==='SENT'">
+                            <div flex class="leftBtn bgRed"
+                                 ng-if="dataList.result[tmp].isPayType&&!dataList.result[tmp].payPrice"
+                                 ng-click="priceRepair(dataList.result[tmp])">
+                                <span ng-if="dataList.result[tmp].isPayType==='TAKE'">补差价</span>
+                                <span ng-if="dataList.result[tmp].isPayType==='AND'||dataList.result[tmp].isPayType==='RENT'">发起赔偿</span>
+                            </div>
+                            <div flex class="leftBtn bgGray"
+                                 ng-if="dataList.result[tmp].payPrice">
+                                已补:{{dataList.result[tmp].payPrice/100.0|num:2}}元
+                            </div>
+                            <div flex class="yiqujian" ng-if="dataList.result[tmp].transportStatus==='TAKE'"
+                                 ng-click="takeShowlog(dataList.result[tmp])">已取件
+                            </div>
+                            <div flex class="yiqujian statusColor" ng-if="dataList.result[tmp].transportStatus==='AND'"
+                                 ng-click="takeShowlog(dataList.result[tmp])">已换货
+                            </div>
+                            <div flex class="yiqujian statusColor" ng-if="dataList.result[tmp].transportStatus==='SENT'"
+                                 ng-click="takeShowlog(dataList.result[tmp])">已送达
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </md-virtual-repeat-container>
+        </div>
+    </md-content>
+</div>
+

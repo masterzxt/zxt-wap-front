@@ -1,0 +1,86 @@
+.ks-bindWx {
+  md-toolbar.ks-index-header.ks-header{
+    margin: 0 auto;
+    position: relative;
+    background: $ks-q-yellow;
+    color: $ks-color-word;
+    .lq-icon{
+      display: block;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      margin-left: 15px;
+    }
+    .right-word{
+      .lq-icon{
+        margin-left: 35px;
+        font-size: 20px;
+      }
+    }
+  }
+  .myInfo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -85px;
+    margin-left: -90px;
+    .title{
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .myImg{
+      width: 100px;
+      height: 100px;
+      display: block;
+      margin: 18px auto;
+      border-radius: 50%;
+    }
+    .name{
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+  .notWx{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -120px;
+    margin-top: -47px;
+    .lq-icon{
+      font-size: 60px;
+      text-align: center;
+      height: 60px;
+      line-height: 60px;
+      color: $lq-icon-pop;
+      margin: 10px auto;
+      display: block;
+    }
+    .depict{
+      text-align: center;
+      font-size: 18px;
+      color: $ks-color-hint;
+    }
+  }
+  .btns{
+    background-color: $ks-q-yellow;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 2px;
+  }
+  .btns_has{
+    background-color: $ks-q-red;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: $ks-color-white;
+    border-radius: 2px;
+  }
+}

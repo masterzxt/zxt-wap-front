@@ -1,0 +1,55 @@
+$bootstrap-sass-asset-helper: false !default;
+//
+// Variables
+// --------------------------------------------------
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+$gray-base: #000 !default;
+
+//== Layout
+$layout-breakpoint-xs: 600px !default;
+$layout-breakpoint-sm: 960px !default;
+$layout-breakpoint-md: 1280px !default;
+$layout-breakpoint-lg: 1920px !default;
+
+//header的设置
+$ks-header-height: 44px;
+$ks-main-min-width: 320px;
+$ks-leftnav-bg-color: rgba(0, 0, 0, 0.7);
+$ks-header-font: 16px;
+
+//小Q一些常用文字颜色,word是默认 pop是弹窗文字 hint是提示
+$ks-color-word: #101010;
+$ks-color-white: #fff;
+$ks-color-pop: #999;
+$ks-color-hint: #ccc;
+
+//小Q图标icon颜色 default默认 white白色图标 pop灰色图标 sup辅助类图标(很少用)
+$lq-icon-default: #333;
+$lq-icon-white: #fff;
+$lq-icon-sup: #666;
+$lq-icon-pop: #ccc;
+$lq-icon-green: #24b24e;
+
+//小Q的主要用到的颜色,服务于高度统一的主色调使用,如果是有新增颜色,请找小卉确认后再增加
+//请使用这里的白色作为背景色
+$ks-q-white: #fff;
+$ks-q-yellow: #ffdd19;
+$ks-q-green: #24b24e;
+$ks-q-blue: #00a1e9;
+$ks-q-purple: #664ea1;
+$ks-q-red: #e84e40;
+$ks-q-hui: #666;
+$ks-q-default: #333;
+$ks-q-bg: #ccc;
+
+//小Q的边框颜色 default是默认(一般都是这个) pop是弹窗的边框色  white是备用的白色边框线
+$ks-border-default: #d5d5d5;
+$ks-border-pop: #999999;
+$ks-border-white: #ffffff;
+
+
+

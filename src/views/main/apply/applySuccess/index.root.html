@@ -1,0 +1,38 @@
+<!--
+<div flex="" layout="column" class="ks-leaseApplication ks-main md-whiteframe-z2 ">
+    <md-toolbar class="md-menu-toolbar ks-header topToolbar">
+        <div flex layout="row" class="ks-header-divWrap ks-user-divWrap">
+            <div class="divTop" flex>
+                <md-icon md-font-set="ks-icon" class="chevron_left" ui-sref="main.center()">arrow_left</md-icon>
+                <span class="regSpan">租赁申请</span>
+                <a href="tel:0571-86064050"> <span class="top-but-yz">联系客服</span></a>
+            </div>
+        </div>
+    </md-toolbar>
+    <md-content flex layout="column" class="top-border empty" class="empty" ng-if="!list.addressList[0]">
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ks-timing-o" class="icon"></md-icon>
+            <div class="txt">提交申请中，请耐心等待</div>
+        </div>
+    </md-content>
+</div>
+-->
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-apply">
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20" ng-click="fallbackPage()">
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+        </div>
+        <h1 flex>申请中</h1>
+        <div flex="20" class="right-word lxkf"><a href="tel:0571-86064050">联系客服</a>
+        </div>
+    </md-toolbar>
+    <md-content flex layout="column" layout-align="center center">
+        <div class="applying" flex layout="column" layout-align="center center">
+            <md-icon md-font-set="lq-icon" md-font-icon="lq-clock" class="icon">
+                <br>
+                <span>提交申请中，请耐心等待</span>
+            </md-icon>
+        </div>
+    </md-content>
+</div>
+

@@ -1,0 +1,99 @@
+<div class="ks-orders" layout="column">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20">
+            <md-icon class="chevron_left ks-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"
+                     ng-click="vm.rollback()"></md-icon>
+        </div>
+        <h1 flex>订单号:{{vm.result.seq}}</h1>
+        <div flex="20" class="right-word" ng-click="vm.navigation('G')"><span>导航</span></div>
+    </md-toolbar>
+    <md-content flex layout="column">
+        <div class="overTask">
+            <div class="overTaskTop">
+                <div class="left">
+                    <i>我</i>
+                    <span>
+                        <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-arrow-right"></md-icon>
+                    </span>
+                    <i ng-class="{blue:vm.result.transportStatus==='TAKE'}">取</i>
+                    <span ng-if="vm.result.type=='AND'">
+                        <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-arrow-right"></md-icon>
+                    </span>
+                    <i ng-if="vm.result.type=='AND'" ng-class="{blue:vm.result.transportStatus==='AND'}">换</i>
+                    <span>
+                        <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-arrow-right"></md-icon>
+                    </span>
+                    <i ng-class="{blue:vm.result.transportStatus==='SENT'}">送</i>
+                </div>
+                <div class="right">￥{{vm.result.price/100 | num:1}}</div>
+            </div>
+            <!--取货地点-->
+            <div class="txtWrap">
+                <div class="txtLeft">
+                    <p class="title" ng-if="vm.result.transportStatus==='TAKE'">取货地点</p>
+                    <p class="title" ng-if="vm.result.transportStatus==='AND'">换货地点</p>
+                    <p class="title" ng-if="vm.result.transportStatus==='SENT'">送货地点</p>
+                    <p class="nr">{{vm.address.addr}}{{vm.address.street}}</p>
+                </div>
+                <div class="txtRight" ng-click="vm.addrShowDialog($event)">详情</div>
+            </div>
+            <!--任务清单-->
+            <div class="txtWrap">
+                <div class="txtLeft">
+                    <p class="title">任务清单</p>
+                    <p class="nr">共{{vm.result.taskList.length}}件商品</p>
+                </div>
+                <div class="txtRight" ng-click="vm.skusshowDialog($event)">详情</div>
+            </div>
+            <!--预约时间-->
+            <div class="txtWrap" ng-if="!vm.result.status||vm.result.status==='NORMAL'">
+                <div class="txtLeft">
+                    <p class="title">预约日期</p>
+                    <p class="nr">{{vm.result.date|date:"yyyy-MM-dd"}}</p>
+                </div>
+                <div class="txtRight" ng-click="vm.dateShowDialog($event)" ng-if="vm.result.transportStatus!='NEW'">调整
+                </div>
+            </div>
+            <div class="txtWrap" ng-if="vm.result.status&&vm.result.status!='NORMAL'">
+                <div class="txtLeft">
+                    <p class="title" ng-if="vm.result.status==='ORDER_CANCEL'">取消订单</p>
+                    <p class="title" ng-if="vm.result.status==='TRANSPORT_CANCEL'">取消任务</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!--地图wrap-->
+        <div id="allmap" flex></div>
+        <!--第三方手机导航查询-->
+        <!--<div id="driving_way">
+            <input type="button" id="result" value="查询"/>
+            <a href="bdapp://map/direction?origin=latlng:34.264642646862,108.95108518068|name:我家&destination=大雁塔&mode=driving&region=西安&src=webapp.navi.yourCompanyName.yourAppName">线路规划</a>
+            <a href="baidumap://map/direction?origin=34.264642646862,108.95108518068&destination=40.007623,116.360582&mode=driving&src=webapp.navi.yourCompanyName.yourAppName">驾车导航</a>
+        </div>-->
+    </md-content>
+    <div class="tibs" ng-if="vm.result.transportStatus!=='NEW'">
+        <div class="tibsLeft">姓名:{{vm.result.useAddr.receiver}}</div>
+        <div class="tibsRight" layout="row" layout-align="center center">
+            <md-icon flex class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-phone"></md-icon>
+            <span class="rightChange">{{vm.result.useAddr.phone}}</span>
+        </div>
+    </div>
+    <div ng-if="!vm.result.status||vm.result.status==='NORMAL'" layout="row" layout-align="center center">
+        <div flex class="but bgGreen" ng-if="vm.result.transportStatus==='NEW'" ng-click="vm.robOrder()">抢单</div>
+        <!--<div class="but" ng-if="vm.result.transportStatus==='END'">删除订单</div>-->
+        <div flex class="but bgRed"
+             ng-if="vm.result.isPayType&&(!vm.result.payPrice||vm.result.payPrice===0)"
+             ng-click="vm.priceRepair()">
+            <span ng-if="vm.result.isPayType==='TAKE'">补差价</span>
+            <span ng-if="dataList.result[tmp].isPayType==='AND'||dataList.result[tmp].isPayType==='RENT'">发起赔偿</span>
+        </div>
+        <div flex class="but" ng-if="vm.result.payPrice&&vm.result.payPrice>0">
+            已支付:{{vm.result.payPrice}}
+        </div>
+        <div flex class="but" ng-if="vm.result.transportStatus==='TAKE'" ng-click="vm.takeShowlog()">已取件</div>
+        <div flex class="but" ng-if="vm.result.transportStatus==='AND'" ng-click="vm.takeShowlog()">已换货</div>
+        <div flex class="but" ng-if="vm.result.transportStatus==='SENT'" ng-click="vm.takeShowlog()">已送达</div>
+    </div>
+</div>

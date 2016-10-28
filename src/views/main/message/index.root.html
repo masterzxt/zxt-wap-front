@@ -1,0 +1,46 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-message">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20" ng-click="fallbackPage()">
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+        </div>
+        <h1 flex>消息中心</h1>
+        <div flex="20" class="right-word"></div>
+    </md-toolbar>
+    <md-content flex="" id="content" class="main-content">
+        <div ng-if="!systemMsg.content && !transportMsg.message && !accountMsg.typeDes"
+             class="isNotMsg" layout="column" layout-align="center center" flex ng-if="">
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-envelope"></md-icon>
+            <div class="txt">暂无消息</div>
+        </div>
+        <div class="myMsg" layout="row" flex ng-if="systemMsg.content" ui-sref="main.message.detail({type: 'system'})">
+            <div class="isLogo" layout="row">
+                <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-commenting"></md-icon>
+            </div>
+            <div class="isTxt">
+                <div class="title">系统消息</div>
+                <div class="content">{{systemMsg.title}}</div>
+            </div>
+        </div>
+        <div class="myMsg" layout="row" flex ng-if="transportMsg.message" ui-sref="main.message.detail({type: 'transport'})">
+            <div class="isLogo" layout="row">
+                <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-truck" style="font-size: 28px"></md-icon>
+            </div>
+            <div class="isTxt">
+                <div class="title">配送消息</div>
+                <div class="content">{{transportMsg.message}}</div>
+            </div>
+        </div>
+        <div class="myMsg" layout="row" flex ng-if="accountMsg.typeDes" ui-sref="main.message.detail({type: 'account'})">
+            <div class="isLogo" layout="row">
+                <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-wallet"></md-icon>
+            </div>
+            <div class="isTxt">
+                <div class="title">余额消息</div>
+                <div class="content">{{accountMsg.typeDes}}</div>
+            </div>
+        </div>
+    </md-content>
+
+</div>
+

@@ -1,0 +1,80 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-apply">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+        <div class="" flex="20" ng-click="fallbackPage()">
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+        </div>
+        <h1 flex>申请成为小Q</h1>
+        <div flex="20" class="right-word"></div>
+    </md-toolbar>
+
+    <md-content flex="" id="content" class="main_content">
+        <div class="tops">
+            <div class="topInput">
+                <input type="text" placeholder="真实姓名" flex ng-model="staff.realName">
+                <div class="topLocation">
+                    <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-map-marker"></md-icon>
+                    <span>{{staff.cityName}}</span>
+                </div>
+            </div>
+            <div class="topInput">
+                <input type="text" placeholder="身份证号" ng-model="staff.idNumber">
+            </div>
+        </div>
+        <div class="upFile">
+            <h2>上传身份证照片</h2>
+            <div class="photo" layout="row">
+                <div class="showPhoto" flex>
+                    <div class="imgs">
+                        <div class="depict">示例图</div>
+                        <img ng-src="{{appConfig.imgUrl}}/FgTqzF-fXnN74sYGmVupzbSTY2pX?imageView2/1/w/{{imgService.indexBelowImg.w}}/h/{{imgService.indexBelowImg.h}}">
+                    </div>
+                </div>
+                <div class="myPhoto" flex>
+                    <div class="btn" ng-click="uploaderFile(1)" ng-if="!idJustKey">
+                        <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-camera-plus"></md-icon>
+                        <div>您的手持身份证正面</div>
+                    </div>
+                    <input type="file" nv-file-select uploader="uploader" id="uploaderFile" ng-if="!idJustKey">
+                    <div class="isMyImg" ng-if="idJustKey">
+                        <img ng-src="{{appConfig.imgUrl}}/{{idJustKey}}?imageView2/1/w/{{imgService.indexBelowImg.w}}/h/{{imgService.indexBelowImg.h}}">
+                    </div>
+                    <div class="removePic" ng-if="idJustKey" ng-click="remove(1)">
+                        <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-minus"></md-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="dividash"></div>
+            <div class="photo" layout="row">
+                <div class="showPhoto" flex>
+                    <div class="imgs">
+                        <div class="depict">示例图</div>
+                        <img ng-src="{{appConfig.imgUrl}}/FonTsXtRNMbkSlX13aL1Lkse4cTp?imageView2/1/w/{{imgService.indexBelowImg.w}}/h/{{imgService.indexBelowImg.h}}">
+                    </div>
+                </div>
+                <div class="myPhoto" flex>
+                    <div class="btn" ng-click="uploaderFile(2)" ng-if="!idBackKey">
+                        <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-camera-plus"></md-icon>
+                        <div>您的身份证正面</div>
+                    </div>
+                    <input type="file" nv-file-select uploader="uploader1" id="uploaderFile1"  ng-if="!idBackKey">
+                    <div class="isMyImg" ng-if="idBackKey">
+                        <img ng-src="{{appConfig.imgUrl}}/{{idBackKey}}?imageView2/1/w/{{imgService.indexBelowImg.w}}/h/{{imgService.indexBelowImg.h}}">
+                    </div>
+                    <div class="removePic" ng-if="idBackKey" ng-click="remove(2)">
+                        <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-minus"></md-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="agreement">
+            <md-icon md-font-set="lq-icon"  md-font-icon="lq-check-circle-o" ng-if="select" ng-click="changeSelect()"></md-icon>
+            <md-icon md-font-set="lq-icon"  md-font-icon="lq-circle-o" ng-if="!select" ng-click="changeSelect()"></md-icon>
+            <span class="agreetxt" ng-click="changeSelect()">已阅读并同意以下协议</span>
+            <i class="info" ng-click="goRentPage()">小q平台服务/劳动协议</i>
+        </div>
+        <div class="applyBtn" ng-click="submit()">提交申请</div>
+
+    </md-content>
+</div>
+

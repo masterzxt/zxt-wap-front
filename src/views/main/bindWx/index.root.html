@@ -1,0 +1,27 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-bindWx">
+    <!--头部-->
+    <md-toolbar class="ks-header ks-index-header" layout="row" layout-align="center center">
+            <div class="" flex="20" ng-click="fallbackPage()">
+                <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-angle-left"></md-icon>
+            </div>
+            <h1 flex>账户绑定</h1>
+            <div flex="20" class="right-word"></div>
+    </md-toolbar>
+
+    <md-content flex="" id="content" ng-if="wxInfo.hasWx">
+        <div class="myInfo">
+            <div class="title">您已经绑定微信账号</div>
+            <img src="{{wxInfo.headimgurl}}" alt="" class="myImg">
+            <div class="name">{{wxInfo.wxName}}</div>
+        </div>
+    </md-content>
+    <md-content flex="" id="content" ng-if="!wxInfo.hasWx">
+        <div class="notWx">
+            <md-icon class="lq-icon" md-font-set="lq-icon" md-font-icon="lq-wechat"></md-icon>
+            <div class="depict">绑定后,您可使用微信免密登录</div>
+        </div>
+    </md-content>
+    <div class="btns_has" layout="column" ng-if="wxInfo.hasWx" ng-click="relieveWx()">解除绑定</div>
+    <div class="btns" layout="column" ng-if="!wxInfo.hasWx" ng-click="bindWx()">马上绑定</div>
+</div>
+

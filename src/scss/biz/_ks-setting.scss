@@ -1,0 +1,71 @@
+.ks-setting {
+  md-toolbar.ks-index-header.ks-header{
+    margin: 0 auto;
+    position: relative;
+    background: $ks-q-yellow;
+    color: $ks-color-word;
+    .lq-icon{
+      display: block;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      margin-left: 15px;
+    }
+    .right-word{
+      .lq-icon{
+        margin-left: 35px;
+        font-size: 20px;
+      }
+    }
+  }
+  .main-content{
+    .items{
+      height: 58px;
+      line-height: 58px;
+      border-bottom: 1px solid $ks-border-default;
+      margin: 0 20px;
+      .names{
+        font-size: 18px;
+      }
+      .types{
+        text-align: right;
+        span{
+          color: $ks-color-hint;
+          font-size: 18px;
+          padding-right: 10px;
+        }
+        .lq-icon{
+          font-size: 14px;
+          color: $lq-icon-default;
+          line-height: 20px;
+          text-align: center;
+        }
+        md-switch{
+          margin: 0;
+          height: 50px;
+          float: right;
+          ._md-bar{
+            height: 24px;
+            top: 0;
+            border-radius: 12px;
+            width: 45px;
+          }
+          ._md-thumb-container{
+            width: 24px;
+          }
+        }
+      }
+    }
+  }
+  .logout{
+    background-color: $ks-q-red;
+    color: $ks-color-white;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    margin: 20px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,84 @@
+.ks-register {
+  background: url("https://o96iiewkd.qnssl.com/964801a482ef6137a8815cb44e6786fb") top no-repeat;
+  background-size: 100%;
+  .backScreen {
+    background-color: #333;
+    opacity: 0.9;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+  md-toolbar.ks-index-header.ks-header {
+    margin: 0 auto;
+    position: relative;
+    z-index: 9;
+    background: $ks-q-yellow;
+    color: $ks-color-word;
+    .lq-icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      margin-left: 15px;
+      color: $lq-icon-default;
+    }
+  }
+  .reg {
+    position: relative;
+    z-index: 9;
+    margin: 20px;
+    h2 {
+      color: $ks-color-white;
+      margin: 0;
+      padding: 5px 0 25px 0;
+      border-bottom: 1px solid $ks-border-pop;
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .reg_item {
+      height: 60px;
+      line-height: 60px;
+      border-bottom: 1px solid $ks-border-pop;
+      input {
+        border: none;
+        width: 100%;
+        background-color: transparent;
+        color: $ks-color-white;
+        font-size: 18px;
+      }
+      .lq-icon {
+        text-align: right;
+        color: $ks-color-white;
+        font-size: 14px;
+        margin-right: 10px;
+      }
+      .reg_msg {
+        color: $ks-color-white;
+        width: 130px;
+        text-decoration: underline;
+        height: 30px;
+        line-height: 30px;
+        border-left: 1px solid $ks-border-white;
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+    .btn_sub {
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      width: 100%;
+      background-color: $ks-q-yellow;
+      color: $ks-color-word;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 2px;
+      margin: 20px 0;
+    }
+  }
+}

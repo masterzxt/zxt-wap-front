@@ -1,0 +1,21 @@
+<md-dialog class="ks-orderDialog">
+    <div class="row">
+        <h1>配送路线</h1>
+    </div>
+    <div>
+        <div class="row cur" ng-if="vms.result.takeAddr">
+            <p class="title">取件地址</p>
+            <p class="address">
+                {{vms.result.takeAddr.street}}-{{vms.result.takeAddr.addr}}</p>
+        </div>
+        <div class="row" ng-if="vms.result.useAddr">
+            <p class="title">换货地点</p>
+            <p class="address">{{vms.result.useAddr.street}}-{{vms.result.useAddr.addr}}</p>
+        </div>
+        <div class="row" ng-if="vms.result.sendAddr">
+            <p class="title">送货地点</p>
+            <p class="address">{{vms.result.sendAddr.street}}-{{vms.result.sendAddr.addr}}</p>
+        </div>
+    </div>
+</md-dialog>
+<div class="closeDialog" ng-click="vms.closeDialog()">X</div>

@@ -1,0 +1,25 @@
+.ks-tijiaoDailog{
+  max-width: 100%;
+  margin: 0 20px;
+  border-radius: 2px;
+  div.title{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid $ks-border-default;
+    padding: 20px 0;
+  }
+  div.bottomDiv{
+    width: 100%;
+    div.left,div.right{
+      font-size: 16px;
+      text-align: center;
+      height: 45px;
+      line-height: 45px;
+      color: #007aff;
+    }
+    div.right{
+      border-left: 1px solid $ks-border-default;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<md-dialog class="ks-comDailog">
+    <div ng-if="params.update&&!params.urlCode">
+        <div class="row">
+            <h1>赔偿信息</h1>
+        </div>
+        <div class="row ">
+            <p class="price">请输入赔偿金额<input placeholder="￥0" data-ng-model="params.price"/></p>
+        </div>
+        <textarea placeholder="添加备注" class="txtArea" data-ng-model="params.memo"></textarea>
+        <div class="row">
+            <div class="left" ng-repeat="img in imgs">
+                <span ng-click="removeOneImg(img.id)">-</span>
+                <img class="img"
+                     ng-src="{{imgUrl}}{{img.key}}?imageView2/2/w/100/h/100"
+                     alt="Picture">
+            </div>
+            <div class="right" ng-click="uploaderFiles()"></div>
+            <div class="clear"></div>
+        </div>
+        <div class="but" ng-click="submitPrice()">{{params.title}}</div>
+        <!--ng-click="querenxiugai()"-->
+    </div>
+    <div ng-if="!params.update&&!params.urlCode">
+        <div class="row ">
+            <p class="price">赔偿金额:￥{{params.price}}</p>
+        </div>
+        <div class="codeWrap" ng-click="paymentUser(1)">
+            <p>支付宝支付</p>
+        </div>
+        <div class="codeWrap" ng-click="paymentUser(2)">
+            <p>微信支付</p>
+        </div>
+        <div class="codeWrap" ng-click="paymentUser(3)">
+            <p>支付宝二维码</p>
+        </div>
+        <div class="codeWrap" ng-click="paymentUser(4)">
+            <p>微信二维码</p>
+        </div>
+        <div class="but genggai" ng-click="submitPrice()">{{params.title}}</div>
+    </div>
+    <div ng-if="params.urlCode">
+        <div class="codeWrap">
+            <qrcode data="{{params.codeUrl}}" style="height: 100%;width: 100%" size="200" version="10"></qrcode>
+        </div>
+    </div>
+</md-dialog>
+<div class="closeDialog" ng-click="closeDialog()">X</div>
+<input type="file" nv-file-select uploader="uploader" style="display: none"
+       id="uploaderFile"/>
