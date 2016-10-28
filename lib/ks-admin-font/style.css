@@ -1,0 +1,251 @@
+@font-face {
+  font-family: 'ks-admin-font';
+  src:  url('fonts/ks-admin-font_20160822_2.eot?oogox8');
+  src:  url('fonts/ks-admin-font_20160822_2.eot?oogox8#iefix') format('embedded-opentype'),
+    url('fonts/ks-admin-font_20160822_2.ttf?oogox8') format('truetype'),
+    url('fonts/ks-admin-font_20160822_2.woff?oogox8') format('woff'),
+    url('fonts/ks-admin-font_20160822_2.svg?oogox8#ks-admin-font') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ks-admin-font {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'ks-admin-font' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  width: 1em;
+  height: 1em;
+  font-size: 24px;
+}
+
+.ks-zengsong:before {
+  content: "\e908";
+}
+.ks-qiyong:before {
+  content: "\e90a";
+}
+.ks-tishi:before {
+  content: "\e909";
+}
+.ks-logo:before {
+  content: "\e907";
+}
+.ks-barcode:before {
+  content: "\e900";
+}
+.ks-bullhorn:before {
+  content: "\e901";
+}
+.ks-database:before {
+  content: "\e902";
+}
+.ks-retweet:before {
+  content: "\e903";
+}
+.ks-wrench:before {
+  content: "\e904";
+}
+.ks-search:before {
+  content: "\f002";
+}
+.ks-star:before {
+  content: "\f005";
+}
+.ks-star-o:before {
+  content: "\f006";
+}
+.ks-user:before {
+  content: "\f007";
+}
+.ks-close:before {
+  content: "\f00d";
+}
+.ks-cog:before {
+  content: "\f013";
+}
+.ks-trash:before {
+  content: "\f014";
+}
+.ks-clock:before {
+  content: "\f017";
+}
+.ks-to-lead:before {
+  content: "\f019";
+}
+.ks-inbox:before {
+  content: "\f01c";
+}
+.ks-lock:before {
+  content: "\f023";
+}
+.ks-tags:before {
+  content: "\f02c";
+}
+.ks-pront:before {
+  content: "\f02f";
+}
+.ks-list:before {
+  content: "\f03a";
+}
+.ks-edit:before {
+  content: "\f044";
+}
+.ks-plus-circle:before {
+  content: "\f055";
+}
+.ks-minus-circle:before {
+  content: "\f056";
+}
+.ks-check-circle:before {
+  content: "\f058";
+}
+.ks-question-circle:before {
+  content: "\f059";
+}
+.ks-ban:before {
+  content: "\f05e";
+}
+.ks-plus2:before {
+  content: "\f068";
+}
+.ks-exclamation:before {
+  content: "\f06a";
+}
+.ks-eye:before {
+  content: "\f06e";
+}
+.ks-eye-slash:before {
+  content: "\f070";
+}
+.ks-shopping-cart:before {
+  content: "\f07a";
+}
+.ks-bar-chart:before {
+  content: "\f080";
+}
+.ks-sign-out:before {
+  content: "\f08b";
+}
+.ks-sign-in:before {
+  content: "\f090";
+}
+.ks-hand-o-right:before {
+  content: "\f0a4";
+}
+.ks-users:before {
+  content: "\f0c0";
+}
+.ks-copy:before {
+  content: "\f0c5";
+}
+.ks-save:before {
+  content: "\f0c7";
+}
+.ks-truck:before {
+  content: "\f0d1";
+}
+.ks-sort-up:before {
+  content: "\f0d8";
+}
+.ks-sort-down:before {
+  content: "\f0dd";
+}
+.ks-comments-o:before {
+  content: "\f0e6";
+}
+.ks-file-text:before {
+  content: "\f0f6";
+}
+.ks-smile-o:before {
+  content: "\f118";
+}
+.ks-unlock-alt:before {
+  content: "\f13e";
+}
+.ks-cny:before {
+  content: "\f157";
+}
+.ks-long-arrow-down2:before {
+  content: "\f177";
+}
+.ks-long-arrow-up2:before {
+  content: "\f178";
+}
+.ks-wechat2:before {
+  content: "\f1d8";
+}
+.ks-calculator:before {
+  content: "\f1ec";
+}
+.ks-pie-chart:before {
+  content: "\f200";
+}
+.ks-calendr-plus:before {
+  content: "\f271";
+}
+.ks-calendr-check:before {
+  content: "\f274";
+}
+.ks-accessible:before {
+  content: "\e905";
+}
+.ks-near_me:before {
+  content: "\e90b";
+}
+.ks-jinyong:before {
+  content: "\e90c";
+}
+.ks-subdirectory_arrow_right:before {
+  content: "\e906";
+}
+.ks-check:before {
+  content: "\f00c";
+}
+.ks-plus:before {
+  content: "\f067";
+}
+.ks-download:before {
+  content: "\f0ed";
+}
+.ks-daochu:before {
+  content: "\f0ee";
+}
+.ks-sentiment:before {
+  content: "\f119";
+}
+.ks-fasong:before {
+  content: "\10ffff";
+}
+.ks-long-arrow-down:before {
+  content: "\f175";
+}
+.ks-long-arrow-up:before {
+  content: "\f176";
+}
+.ks-wechat:before {
+  content: "\f1d7";
+}
+.ks-shengcheng:before {
+  content: "\f252";
+}
+
