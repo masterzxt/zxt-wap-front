@@ -779,12 +779,17 @@ gulp.task('package', cb => {
 
 
 // ------------------------------------------------------------------------------ task : default / watch
+gulp.task('app.compile.end.notify', cb => {
 
+    gutil.log(`${chalk.red('已经编译完毕，开始监听')}，请浏览器访问： http://dev.test.me/qh/admin/local/1xx00/`);
+    cb();
+});
 gulp.task('default', cb => {
 
     // 先手动执行一遍
     runSequence(
-        "app.compile"
+        "app.compile",
+        'app.compile.end.notify'
     );
 
     // 再进行监测
@@ -829,3 +834,5 @@ gulp.task('demo', cb => {
         gutil.log(`File ${chalk.cyan(event.path)} was ${event.type}, running tasks...`);
     }
 });
+
+

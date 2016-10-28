@@ -17,6 +17,8 @@ angular.module('q-wap-front')
          * @return 一个代表用户信息的 promise
          */
         function getCurUser(reload, required) {
+            _this.curUser = resp;
+            return $q.resolve(resp);
             // 用户信息为空，或者 需要重新查询
             if (!this.curUser || reload) {
                 return $http.get(appConfig.apiPath + '/user/userInfo', {
