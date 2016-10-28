@@ -1,7 +1,0 @@
-{
-  "name": "angular-editor",
-  "homepage": "https://github.com/wanming/angular-editor",
-  "main" : ["./javascripts/angular-editor.js"],
-  "dependencies": {
-  } 
-}
